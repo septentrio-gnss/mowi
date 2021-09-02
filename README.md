@@ -10,7 +10,7 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) & [OSHW 
 
 # What is mowi?
 
-**The mowi is an Open Soure hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
+**The mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
 
 <img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
 
@@ -49,14 +49,6 @@ At this moment, no third party is known, to the author or Septentrio, to be sell
 Within this project, we have used the manufacturing and assembly services of Eurocircuits. In case of interest in using their services to produce the mowi, please find already processed production data in `.\fabrication\eurocircuits`.  These files can be uploaded directly to Eurocircuits and boost the process of PCB validation and assembly analysis.
 
 :warning: **Disclaimer**: This project is **PROVIDED AS IS** and has not been fully validated nor by the author nor by Septentrio. It remains your responsibility when producing or using this design for your own purposes.
-
----
-
-# How to use mowi?
-
-## Basic connection
-## Wireless connection
-## RTK setup
 
 ---
 

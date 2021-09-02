@@ -1,0 +1,808 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr User 8268 5827
+encoding utf-8
+Sheet 2 7
+Title "mowi"
+Date "2021-08-10"
+Rev "v1.0"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:LED_PAD D?
+U 1 1 63688439
+P 1900 1150
+AR Path="/63688439" Ref="D?"  Part="1" 
+AR Path="/636584B2/63688439" Ref="D2"  Part="1" 
+AR Path="/63E157A3/63688439" Ref="D?"  Part="1" 
+F 0 "D2" H 1900 650 50  0000 C CNN
+F 1 "155124GS73200" H 1900 750 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 1900 1150 50  0001 C CNN
+F 3 "vhttps://www.we-https://www.we-online.de/katalog/datasheet/155124GS73200.pdf" H 1900 1150 50  0001 C CNN
+F 4 "20mA@3.3V" H 1900 850 50  0000 C CNN "Specs"
+	1    1900 1150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_PAD D?
+U 1 1 6368843F
+P 1900 3000
+AR Path="/6368843F" Ref="D?"  Part="1" 
+AR Path="/636584B2/6368843F" Ref="D3"  Part="1" 
+AR Path="/63E157A3/6368843F" Ref="D?"  Part="1" 
+F 0 "D3" H 1900 2500 50  0000 C CNN
+F 1 "155124GS73200" H 1900 2600 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 1900 3000 50  0001 C CNN
+F 3 "https://www.we-online.de/katalog/datasheet/155124GS73200.pdf" H 1900 3000 50  0001 C CNN
+F 4 "20mA@3.3V" H 1900 2700 50  0000 C CNN "Specs"
+	1    1900 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_PAD D?
+U 1 1 63688450
+P 4350 3000
+AR Path="/63688450" Ref="D?"  Part="1" 
+AR Path="/636584B2/63688450" Ref="D5"  Part="1" 
+AR Path="/63E157A3/63688450" Ref="D?"  Part="1" 
+F 0 "D5" H 4350 2500 50  0000 C CNN
+F 1 "155124GS73200" H 4350 2600 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 4350 3000 50  0001 C CNN
+F 3 "https://www.we-online.de/katalog/datasheet/155124GS73200.pdf" H 4350 3000 50  0001 C CNN
+F 4 "20mA@3.3V" H 4350 2700 50  0000 C CNN "Specs"
+	1    4350 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED_PAD D?
+U 1 1 6368845C
+P 6850 1150
+AR Path="/6368845C" Ref="D?"  Part="1" 
+AR Path="/636584B2/6368845C" Ref="D6"  Part="1" 
+AR Path="/63E157A3/6368845C" Ref="D?"  Part="1" 
+F 0 "D6" H 6850 650 50  0000 C CNN
+F 1 "155124BS73200" H 6850 750 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 6850 1150 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Wurth%20Electronics%20PDFs/155124BS73200.pdf" H 6850 1150 50  0001 C CNN
+F 4 "20mA@3.2V" H 6850 850 50  0000 C CNN "Specs"
+	1    6850 1150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 63688470
+P 6450 3000
+AR Path="/63688470" Ref="R?"  Part="1" 
+AR Path="/636584B2/63688470" Ref="R29"  Part="1" 
+AR Path="/63E157A3/63688470" Ref="R?"  Part="1" 
+F 0 "R29" V 6657 3000 50  0000 C CNN
+F 1 "5.6" V 6566 3000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6380 3000 50  0001 C CNN
+F 3 "~" H 6450 3000 50  0001 C CNN
+	1    6450 3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7100 3000 7100 3050
+Wire Wire Line
+	6750 3000 6600 3000
+$Comp
+L power:GND #PWR?
+U 1 1 63688478
+P 7100 3650
+AR Path="/63688478" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/63688478" Ref="#PWR078"  Part="1" 
+AR Path="/63E157A3/63688478" Ref="#PWR?"  Part="1" 
+F 0 "#PWR078" H 7100 3400 50  0001 C CNN
+F 1 "GND" H 7105 3477 50  0000 C CNN
+F 2 "" H 7100 3650 50  0001 C CNN
+F 3 "" H 7100 3650 50  0001 C CNN
+	1    7100 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 3000 6300 3000
+$Comp
+L Device:R R?
+U 1 1 63688486
+P 6450 3250
+AR Path="/63688486" Ref="R?"  Part="1" 
+AR Path="/636584B2/63688486" Ref="R30"  Part="1" 
+AR Path="/63E157A3/63688486" Ref="R?"  Part="1" 
+F 0 "R30" V 6565 3250 50  0000 C CNN
+F 1 "1k" V 6656 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6380 3250 50  0001 C CNN
+F 3 "~" H 6450 3250 50  0001 C CNN
+	1    6450 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6700 3250 6600 3250
+Connection ~ 6700 3250
+Wire Wire Line
+	6800 3250 6700 3250
+Wire Wire Line
+	6700 3300 6700 3250
+$Comp
+L Device:R R31
+U 1 1 636EA663
+P 6700 3450
+AR Path="/636584B2/636EA663" Ref="R31"  Part="1" 
+AR Path="/63E157A3/636EA663" Ref="R?"  Part="1" 
+F 0 "R31" H 6770 3496 50  0000 L CNN
+F 1 "1M" H 6770 3405 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6630 3450 50  0001 C CNN
+F 3 "~" H 6700 3450 50  0001 C CNN
+	1    6700 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 3450 7100 3650
+$Comp
+L power:GND #PWR?
+U 1 1 636EEF21
+P 6700 3650
+AR Path="/636EEF21" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/636EEF21" Ref="#PWR074"  Part="1" 
+AR Path="/63E157A3/636EEF21" Ref="#PWR?"  Part="1" 
+F 0 "#PWR074" H 6700 3400 50  0001 C CNN
+F 1 "GND" H 6705 3477 50  0000 C CNN
+F 2 "" H 6700 3650 50  0001 C CNN
+F 3 "" H 6700 3650 50  0001 C CNN
+	1    6700 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 3600 6700 3650
+Text HLabel 5950 3250 0    50   Input ~ 0
+Bluetooth
+Wire Notes Line width 10
+	5250 500  5250 4050
+Wire Notes Line width 10
+	500  2250 7800 2250
+Wire Notes Line width 10
+	500  4100 3500 4100
+Wire Notes Line width 10
+	2750 500  2750 4100
+Text Notes 5300 2450 0    75   ~ 15
+6: Bluetooth - blue
+$Comp
+L Device:R R?
+U 1 1 6372199B
+P 6400 1150
+AR Path="/6372199B" Ref="R?"  Part="1" 
+AR Path="/636584B2/6372199B" Ref="R27"  Part="1" 
+AR Path="/63E157A3/6372199B" Ref="R?"  Part="1" 
+F 0 "R27" V 6607 1150 50  0000 C CNN
+F 1 "5.6" V 6516 1150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6330 1150 50  0001 C CNN
+F 3 "~" H 6400 1150 50  0001 C CNN
+	1    6400 1150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7050 1150 7050 1200
+Wire Wire Line
+	6700 1150 6550 1150
+$Comp
+L power:GND #PWR?
+U 1 1 637219A3
+P 7050 1800
+AR Path="/637219A3" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/637219A3" Ref="#PWR076"  Part="1" 
+AR Path="/63E157A3/637219A3" Ref="#PWR?"  Part="1" 
+F 0 "#PWR076" H 7050 1550 50  0001 C CNN
+F 1 "GND" H 7055 1627 50  0000 C CNN
+F 2 "" H 7050 1800 50  0001 C CNN
+F 3 "" H 7050 1800 50  0001 C CNN
+	1    7050 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 1150 6250 1150
+$Comp
+L Device:R R?
+U 1 1 637219B0
+P 6400 1400
+AR Path="/637219B0" Ref="R?"  Part="1" 
+AR Path="/636584B2/637219B0" Ref="R28"  Part="1" 
+AR Path="/63E157A3/637219B0" Ref="R?"  Part="1" 
+F 0 "R28" V 6515 1400 50  0000 C CNN
+F 1 "1k" V 6606 1400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 6330 1400 50  0001 C CNN
+F 3 "~" H 6400 1400 50  0001 C CNN
+	1    6400 1400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7050 1600 7050 1800
+Text HLabel 5900 1400 0    50   Input ~ 0
+WiFi
+Text Notes 5300 650  0    75   ~ 15
+5: WiFi - blue
+$Comp
+L Device:R R?
+U 1 1 6372983D
+P 3900 1150
+AR Path="/6372983D" Ref="R?"  Part="1" 
+AR Path="/636584B2/6372983D" Ref="R21"  Part="1" 
+AR Path="/63E157A3/6372983D" Ref="R?"  Part="1" 
+F 0 "R21" V 4107 1150 50  0000 C CNN
+F 1 "5.6" V 4016 1150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 3830 1150 50  0001 C CNN
+F 3 "~" H 3900 1150 50  0001 C CNN
+	1    3900 1150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4550 1150 4550 1200
+Wire Wire Line
+	4200 1150 4050 1150
+$Comp
+L power:GND #PWR?
+U 1 1 63729845
+P 4550 1800
+AR Path="/63729845" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/63729845" Ref="#PWR070"  Part="1" 
+AR Path="/63E157A3/63729845" Ref="#PWR?"  Part="1" 
+F 0 "#PWR070" H 4550 1550 50  0001 C CNN
+F 1 "GND" H 4555 1627 50  0000 C CNN
+F 2 "" H 4550 1800 50  0001 C CNN
+F 3 "" H 4550 1800 50  0001 C CNN
+	1    4550 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 1150 3750 1150
+$Comp
+L Device:R R?
+U 1 1 63729852
+P 3900 1400
+AR Path="/63729852" Ref="R?"  Part="1" 
+AR Path="/636584B2/63729852" Ref="R22"  Part="1" 
+AR Path="/63E157A3/63729852" Ref="R?"  Part="1" 
+F 0 "R22" V 4015 1400 50  0000 C CNN
+F 1 "1k" V 4106 1400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 3830 1400 50  0001 C CNN
+F 3 "~" H 3900 1400 50  0001 C CNN
+	1    3900 1400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 1400 4050 1400
+Connection ~ 4150 1400
+Wire Wire Line
+	4250 1400 4150 1400
+Wire Wire Line
+	4150 1450 4150 1400
+$Comp
+L Device:R R25
+U 1 1 6372985D
+P 4150 1600
+AR Path="/636584B2/6372985D" Ref="R25"  Part="1" 
+AR Path="/63E157A3/6372985D" Ref="R?"  Part="1" 
+F 0 "R25" H 4220 1646 50  0000 L CNN
+F 1 "1M" H 4220 1555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4080 1600 50  0001 C CNN
+F 3 "~" H 4150 1600 50  0001 C CNN
+	1    4150 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 1600 4550 1800
+$Comp
+L power:GND #PWR?
+U 1 1 63729864
+P 4150 1800
+AR Path="/63729864" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/63729864" Ref="#PWR066"  Part="1" 
+AR Path="/63E157A3/63729864" Ref="#PWR?"  Part="1" 
+F 0 "#PWR066" H 4150 1550 50  0001 C CNN
+F 1 "GND" H 4155 1627 50  0000 C CNN
+F 2 "" H 4150 1800 50  0001 C CNN
+F 3 "" H 4150 1800 50  0001 C CNN
+	1    4150 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 1750 4150 1800
+Text HLabel 3400 1400 0    50   Input ~ 0
+GP1
+Text Notes 2800 650  0    75   ~ 15
+3: GP1 - green
+$Comp
+L Device:R R?
+U 1 1 637301C3
+P 1450 1150
+AR Path="/637301C3" Ref="R?"  Part="1" 
+AR Path="/636584B2/637301C3" Ref="R17"  Part="1" 
+AR Path="/63E157A3/637301C3" Ref="R?"  Part="1" 
+F 0 "R17" V 1657 1150 50  0000 C CNN
+F 1 "5.6" V 1566 1150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1380 1150 50  0001 C CNN
+F 3 "~" H 1450 1150 50  0001 C CNN
+	1    1450 1150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1750 1150 1600 1150
+$Comp
+L power:GND #PWR?
+U 1 1 637301CB
+P 2100 1800
+AR Path="/637301CB" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/637301CB" Ref="#PWR062"  Part="1" 
+AR Path="/63E157A3/637301CB" Ref="#PWR?"  Part="1" 
+F 0 "#PWR062" H 2100 1550 50  0001 C CNN
+F 1 "GND" H 2105 1627 50  0000 C CNN
+F 2 "" H 2100 1800 50  0001 C CNN
+F 3 "" H 2100 1800 50  0001 C CNN
+	1    2100 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 1150 1300 1150
+Text Notes 550  650  0    75   ~ 15
+1: Power - green
+$Comp
+L Device:R R?
+U 1 1 63734278
+P 1450 3000
+AR Path="/63734278" Ref="R?"  Part="1" 
+AR Path="/636584B2/63734278" Ref="R18"  Part="1" 
+AR Path="/63E157A3/63734278" Ref="R?"  Part="1" 
+F 0 "R18" V 1657 3000 50  0000 C CNN
+F 1 "5.6" V 1566 3000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1380 3000 50  0001 C CNN
+F 3 "~" H 1450 3000 50  0001 C CNN
+	1    1450 3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1750 3000 1600 3000
+$Comp
+L power:GND #PWR?
+U 1 1 63734280
+P 2100 3650
+AR Path="/63734280" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/63734280" Ref="#PWR063"  Part="1" 
+AR Path="/63E157A3/63734280" Ref="#PWR?"  Part="1" 
+F 0 "#PWR063" H 2100 3400 50  0001 C CNN
+F 1 "GND" H 2105 3477 50  0000 C CNN
+F 2 "" H 2100 3650 50  0001 C CNN
+F 3 "" H 2100 3650 50  0001 C CNN
+	1    2100 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 3000 1300 3000
+$Comp
+L Device:R R?
+U 1 1 6373428D
+P 1450 3250
+AR Path="/6373428D" Ref="R?"  Part="1" 
+AR Path="/636584B2/6373428D" Ref="R19"  Part="1" 
+AR Path="/63E157A3/6373428D" Ref="R?"  Part="1" 
+F 0 "R19" V 1565 3250 50  0000 C CNN
+F 1 "1k" V 1656 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1380 3250 50  0001 C CNN
+F 3 "~" H 1450 3250 50  0001 C CNN
+	1    1450 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1700 3250 1600 3250
+Connection ~ 1700 3250
+Wire Wire Line
+	1800 3250 1700 3250
+Wire Wire Line
+	1700 3300 1700 3250
+$Comp
+L Device:R R20
+U 1 1 63734298
+P 1700 3450
+AR Path="/636584B2/63734298" Ref="R20"  Part="1" 
+AR Path="/63E157A3/63734298" Ref="R?"  Part="1" 
+F 0 "R20" H 1770 3496 50  0000 L CNN
+F 1 "1M" H 1770 3405 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 1630 3450 50  0001 C CNN
+F 3 "~" H 1700 3450 50  0001 C CNN
+	1    1700 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 3450 2100 3650
+$Comp
+L power:GND #PWR?
+U 1 1 6373429F
+P 1700 3650
+AR Path="/6373429F" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/6373429F" Ref="#PWR059"  Part="1" 
+AR Path="/63E157A3/6373429F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR059" H 1700 3400 50  0001 C CNN
+F 1 "GND" H 1705 3477 50  0000 C CNN
+F 2 "" H 1700 3650 50  0001 C CNN
+F 3 "" H 1700 3650 50  0001 C CNN
+	1    1700 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 3600 1700 3650
+Text HLabel 950  3250 0    50   Input ~ 0
+GPLED
+Text Notes 550  2450 0    75   ~ 15
+2: GPLED - green
+$Comp
+L Device:R R?
+U 1 1 637384E6
+P 3900 3000
+AR Path="/637384E6" Ref="R?"  Part="1" 
+AR Path="/636584B2/637384E6" Ref="R23"  Part="1" 
+AR Path="/63E157A3/637384E6" Ref="R?"  Part="1" 
+F 0 "R23" V 4107 3000 50  0000 C CNN
+F 1 "5.6" V 4016 3000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 3830 3000 50  0001 C CNN
+F 3 "~" H 3900 3000 50  0001 C CNN
+	1    3900 3000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4550 3000 4550 3050
+Wire Wire Line
+	4200 3000 4050 3000
+$Comp
+L power:GND #PWR?
+U 1 1 637384EE
+P 4550 3650
+AR Path="/637384EE" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/637384EE" Ref="#PWR071"  Part="1" 
+AR Path="/63E157A3/637384EE" Ref="#PWR?"  Part="1" 
+F 0 "#PWR071" H 4550 3400 50  0001 C CNN
+F 1 "GND" H 4555 3477 50  0000 C CNN
+F 2 "" H 4550 3650 50  0001 C CNN
+F 3 "" H 4550 3650 50  0001 C CNN
+	1    4550 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3000 3750 3000
+$Comp
+L Device:R R?
+U 1 1 637384FB
+P 3900 3250
+AR Path="/637384FB" Ref="R?"  Part="1" 
+AR Path="/636584B2/637384FB" Ref="R24"  Part="1" 
+AR Path="/63E157A3/637384FB" Ref="R?"  Part="1" 
+F 0 "R24" V 4015 3250 50  0000 C CNN
+F 1 "1k" V 4106 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 3830 3250 50  0001 C CNN
+F 3 "~" H 3900 3250 50  0001 C CNN
+	1    3900 3250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4150 3250 4050 3250
+Connection ~ 4150 3250
+Wire Wire Line
+	4250 3250 4150 3250
+Wire Wire Line
+	4150 3300 4150 3250
+$Comp
+L Device:R R26
+U 1 1 63738506
+P 4150 3450
+AR Path="/636584B2/63738506" Ref="R26"  Part="1" 
+AR Path="/63E157A3/63738506" Ref="R?"  Part="1" 
+F 0 "R26" H 4220 3496 50  0000 L CNN
+F 1 "1M" H 4220 3405 50  0000 L CNN
+F 2 "Resistor_SMD:R_0402_1005Metric" V 4080 3450 50  0001 C CNN
+F 3 "~" H 4150 3450 50  0001 C CNN
+	1    4150 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4550 3450 4550 3650
+$Comp
+L power:GND #PWR?
+U 1 1 6373850D
+P 4150 3650
+AR Path="/6373850D" Ref="#PWR?"  Part="1" 
+AR Path="/636584B2/6373850D" Ref="#PWR067"  Part="1" 
+AR Path="/63E157A3/6373850D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR067" H 4150 3400 50  0001 C CNN
+F 1 "GND" H 4155 3477 50  0000 C CNN
+F 2 "" H 4150 3650 50  0001 C CNN
+F 3 "" H 4150 3650 50  0001 C CNN
+	1    4150 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3600 4150 3650
+Text HLabel 3400 3250 0    50   Input ~ 0
+SDLOG
+Text Notes 2800 2450 0    75   ~ 15
+4: SDLOG - green
+Wire Wire Line
+	2100 1150 2100 1800
+$Comp
+L Device:LED_PAD D?
+U 1 1 63746C67
+P 4350 1150
+AR Path="/63746C67" Ref="D?"  Part="1" 
+AR Path="/636584B2/63746C67" Ref="D4"  Part="1" 
+AR Path="/63E157A3/63746C67" Ref="D?"  Part="1" 
+F 0 "D4" H 4350 650 50  0000 C CNN
+F 1 "155124GS73200" H 4350 750 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 4350 1150 50  0001 C CNN
+F 3 "https://www.we-online.de/katalog/datasheet/155124GS73200.pdf" H 4350 1150 50  0001 C CNN
+F 4 "20mA@3.3V" H 4350 850 50  0000 C CNN "Specs"
+	1    4350 1150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2050 3000 2100 3000
+Wire Wire Line
+	2100 3000 2100 3050
+Wire Wire Line
+	4550 3000 4500 3000
+Wire Wire Line
+	4500 1150 4550 1150
+Wire Wire Line
+	7050 1150 7000 1150
+Wire Wire Line
+	7100 3000 7050 3000
+Wire Wire Line
+	2050 1150 2100 1150
+$Comp
+L power:+3V3 #PWR057
+U 1 1 621FDDC8
+P 1250 1150
+AR Path="/636584B2/621FDDC8" Ref="#PWR057"  Part="1" 
+AR Path="/63E157A3/621FDDC8" Ref="#PWR?"  Part="1" 
+F 0 "#PWR057" H 1250 1000 50  0001 C CNN
+F 1 "+3V3" V 1265 1278 50  0000 L CNN
+F 2 "" H 1250 1150 50  0001 C CNN
+F 3 "" H 1250 1150 50  0001 C CNN
+	1    1250 1150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5900 1400 6250 1400
+Text Notes 5500 2150 0    50   ~ 0
+Pull-down on ESP side\n(strapping pin).
+Wire Notes Line
+	6450 2050 6650 1500
+$Comp
+L Device:Q_NMOS_GSD Q2
+U 1 1 60FBE8FD
+P 4450 1400
+F 0 "Q2" H 4655 1491 50  0000 L CNN
+F 1 "BSS138PW" H 4655 1400 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 4650 1500 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BSS138PW.pdf" H 4450 1400 50  0001 C CNN
+F 4 "0R9" H 4655 1309 50  0000 L CNN "Ron"
+	1    4450 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q5
+U 1 1 60FC35F3
+P 7000 3250
+F 0 "Q5" H 7205 3341 50  0000 L CNN
+F 1 "BSS138PW" H 7205 3250 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 7200 3350 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BSS138PW.pdf" H 7000 3250 50  0001 C CNN
+F 4 "0R9" H 7205 3159 50  0000 L CNN "Ron"
+	1    7000 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q3
+U 1 1 60FC512E
+P 4450 3250
+F 0 "Q3" H 4655 3341 50  0000 L CNN
+F 1 "BSS138PW" H 4655 3250 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 4650 3350 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BSS138PW.pdf" H 4450 3250 50  0001 C CNN
+F 4 "0R9" H 4655 3159 50  0000 L CNN "Ron"
+	1    4450 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q1
+U 1 1 60FC6C39
+P 2000 3250
+F 0 "Q1" H 2205 3341 50  0000 L CNN
+F 1 "BSS138PW" H 2205 3250 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 2200 3350 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BSS138PW.pdf" H 2000 3250 50  0001 C CNN
+F 4 "0R9" H 2205 3159 50  0000 L CNN "Ron"
+	1    2000 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3400 3250 3750 3250
+Wire Wire Line
+	950  3250 1300 3250
+Wire Wire Line
+	3400 1400 3750 1400
+Wire Wire Line
+	5950 3250 6300 3250
+$Comp
+L Device:Q_NMOS_GSD Q4
+U 1 1 60FC1E96
+P 6950 1400
+F 0 "Q4" H 7155 1491 50  0000 L CNN
+F 1 "BSS138PW" H 7155 1400 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 7150 1500 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/BSS138PW.pdf" H 6950 1400 50  0001 C CNN
+F 4 "0R9" H 7155 1309 50  0000 L CNN "Ron"
+	1    6950 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 1400 6750 1400
+$Comp
+L power:+3V3 #PWR058
+U 1 1 61CB60C2
+P 1250 3000
+AR Path="/636584B2/61CB60C2" Ref="#PWR058"  Part="1" 
+AR Path="/63E157A3/61CB60C2" Ref="#PWR?"  Part="1" 
+F 0 "#PWR058" H 1250 2850 50  0001 C CNN
+F 1 "+3V3" V 1265 3128 50  0000 L CNN
+F 2 "" H 1250 3000 50  0001 C CNN
+F 3 "" H 1250 3000 50  0001 C CNN
+	1    1250 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR065
+U 1 1 61CB7208
+P 3700 3000
+AR Path="/636584B2/61CB7208" Ref="#PWR065"  Part="1" 
+AR Path="/63E157A3/61CB7208" Ref="#PWR?"  Part="1" 
+F 0 "#PWR065" H 3700 2850 50  0001 C CNN
+F 1 "+3V3" V 3715 3128 50  0000 L CNN
+F 2 "" H 3700 3000 50  0001 C CNN
+F 3 "" H 3700 3000 50  0001 C CNN
+	1    3700 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR064
+U 1 1 61CB8132
+P 3700 1150
+AR Path="/636584B2/61CB8132" Ref="#PWR064"  Part="1" 
+AR Path="/63E157A3/61CB8132" Ref="#PWR?"  Part="1" 
+F 0 "#PWR064" H 3700 1000 50  0001 C CNN
+F 1 "+3V3" V 3715 1278 50  0000 L CNN
+F 2 "" H 3700 1150 50  0001 C CNN
+F 3 "" H 3700 1150 50  0001 C CNN
+	1    3700 1150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR072
+U 1 1 61CB9106
+P 6200 1150
+AR Path="/636584B2/61CB9106" Ref="#PWR072"  Part="1" 
+AR Path="/63E157A3/61CB9106" Ref="#PWR?"  Part="1" 
+F 0 "#PWR072" H 6200 1000 50  0001 C CNN
+F 1 "+3V3" V 6215 1278 50  0000 L CNN
+F 2 "" H 6200 1150 50  0001 C CNN
+F 3 "" H 6200 1150 50  0001 C CNN
+	1    6200 1150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR073
+U 1 1 61CBA042
+P 6250 3000
+AR Path="/636584B2/61CBA042" Ref="#PWR073"  Part="1" 
+AR Path="/63E157A3/61CBA042" Ref="#PWR?"  Part="1" 
+F 0 "#PWR073" H 6250 2850 50  0001 C CNN
+F 1 "+3V3" V 6265 3128 50  0000 L CNN
+F 2 "" H 6250 3000 50  0001 C CNN
+F 3 "" H 6250 3000 50  0001 C CNN
+	1    6250 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED_PAD D?
+U 1 1 63688463
+P 6900 3000
+AR Path="/63688463" Ref="D?"  Part="1" 
+AR Path="/636584B2/63688463" Ref="D7"  Part="1" 
+AR Path="/63E157A3/63688463" Ref="D?"  Part="1" 
+F 0 "D7" H 6900 2500 50  0000 C CNN
+F 1 "155124BS73200" H 6900 2600 50  0000 C CNN
+F 2 "Septentrio_Passive:LED_Wuerth_WL-SMSW-1204" H 6900 3000 50  0001 C CNN
+F 3 "https://media.digikey.com/pdf/Data%20Sheets/Wurth%20Electronics%20PDFs/155124BS73200.pdf" H 6900 3000 50  0001 C CNN
+F 4 "20mA@3.2V" H 6900 2700 50  0000 C CNN "Colour"
+	1    6900 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR077
+U 1 1 61135275
+P 7050 2800
+F 0 "#PWR077" H 7050 2550 50  0001 C CNN
+F 1 "GND" V 7055 2672 50  0000 R CNN
+F 2 "" H 7050 2800 50  0001 C CNN
+F 3 "" H 7050 2800 50  0001 C CNN
+	1    7050 2800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7050 2800 6900 2800
+$Comp
+L power:GND #PWR069
+U 1 1 6113AA22
+P 4500 2800
+F 0 "#PWR069" H 4500 2550 50  0001 C CNN
+F 1 "GND" V 4505 2672 50  0000 R CNN
+F 2 "" H 4500 2800 50  0001 C CNN
+F 3 "" H 4500 2800 50  0001 C CNN
+	1    4500 2800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4350 2800 4500 2800
+$Comp
+L power:GND #PWR061
+U 1 1 6113BDC6
+P 2050 2800
+F 0 "#PWR061" H 2050 2550 50  0001 C CNN
+F 1 "GND" V 2055 2672 50  0000 R CNN
+F 2 "" H 2050 2800 50  0001 C CNN
+F 3 "" H 2050 2800 50  0001 C CNN
+	1    2050 2800
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1900 2800 2050 2800
+$Comp
+L power:GND #PWR060
+U 1 1 6113D22A
+P 2050 950
+F 0 "#PWR060" H 2050 700 50  0001 C CNN
+F 1 "GND" V 2055 822 50  0000 R CNN
+F 2 "" H 2050 950 50  0001 C CNN
+F 3 "" H 2050 950 50  0001 C CNN
+	1    2050 950 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1900 950  2050 950 
+$Comp
+L power:GND #PWR068
+U 1 1 6113E6C4
+P 4500 950
+F 0 "#PWR068" H 4500 700 50  0001 C CNN
+F 1 "GND" V 4505 822 50  0000 R CNN
+F 2 "" H 4500 950 50  0001 C CNN
+F 3 "" H 4500 950 50  0001 C CNN
+	1    4500 950 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4350 950  4500 950 
+$Comp
+L power:GND #PWR075
+U 1 1 6113FB10
+P 7000 950
+F 0 "#PWR075" H 7000 700 50  0001 C CNN
+F 1 "GND" V 7005 822 50  0000 R CNN
+F 2 "" H 7000 950 50  0001 C CNN
+F 3 "" H 7000 950 50  0001 C CNN
+	1    7000 950 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6850 950  7000 950 
+$EndSCHEMATC

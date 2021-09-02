@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name Septentrio_ICs)(type Legacy)(uri ${KIPRJMOD}/../library/Septentrio_symbols/Septentrio_ICs.lib)(options "")(descr ""))
+  (lib (name Septentrio_Modules)(type Legacy)(uri ${KIPRJMOD}/../library/Septentrio_symbols/Septentrio_Modules.lib)(options "")(descr ""))
+)

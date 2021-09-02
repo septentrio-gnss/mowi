@@ -1,0 +1,14 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ESP32-WROVER-xE
+D ESP32 based generic WiFi-BT-BLE MCU module
+K ESP32, ESP, wrover, WiFi, Bluetooth, Bt
+F https://www.espressif.com/sites/default/files/documentation/esp32-wrover-e_esp32-wrover-ie_datasheet_en.pdf
+$ENDCMP
+#
+$CMP mosaic
+D low-power multi-band multi-constellation GNSS receiver
+K mosaic, GNSS, Septentrio
+$ENDCMP
+#
+#End Doc Library

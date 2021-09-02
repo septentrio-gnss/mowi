@@ -1,0 +1,38 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP FEMCxxxGTT
+D FLEXON eMMC XTRA series, 153 ball
+K eMMC, XTRA, FLEXON
+$ENDCMP
+#
+$CMP KSZ8041NL
+D 10BASE-T/100BASE-TX Physical Layer Transceiver
+K PHY, Ethernet, KSZ8041
+F https://ww1.microchip.com/downloads/en/DeviceDoc/00002245B.pdf
+$ENDCMP
+#
+$CMP MCP1642BD-ADJ
+D 1.8A Input Current Switch, 1 MHz Low-Voltage Start-Up Synchronous Boost Regulator
+K MCP16442, DC/DC, DCDC, DC-DC, boost
+F https://ww1.microchip.com/downloads/en/DeviceDoc/20005253A.pdf
+$ENDCMP
+#
+$CMP SN74AUP1T97DCK
+D Single-Supply Voltage-level Translator With Nine Configurable Gate Logic Functions
+K SN74AUP1T97, translator, logic, gate
+F https://www.ti.com/lit/ds/symlink/sn74aup1t97.pdf
+$ENDCMP
+#
+$CMP TPS2521xxRPW
+D 2.7 - 5.7 V, 4 A, 31-mΩ True Reverse Current Blocking eFuse with Input Reverse Polarity Protection
+K TPS2521, eFuse, reverse polarity
+F https://www.ti.com/lit/ds/symlink/tps2521.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1626671369222&ref_url=https%253A%252F%252Fwww.digikey.ch%252F
+$ENDCMP
+#
+$CMP TPS63025x
+D High Current, High Efficiency Single Inductor Buck-Boost Converter
+K TPS63025, DC/DC, DCDC, DC-DC, buck-boost
+F https://www.ti.com/lit/ds/symlink/tps630250.pdf
+$ENDCMP
+#
+#End Doc Library

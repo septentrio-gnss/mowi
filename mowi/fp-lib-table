@@ -1,0 +1,7 @@
+(fp_lib_table
+  (lib (name Septentrio_Connectors)(type KiCad)(uri ${KIPRJMOD}/../library/Septentrio_Connectors.pretty)(options "")(descr ""))
+  (lib (name Septentrio_Graphic)(type KiCad)(uri ${KIPRJMOD}/../library/Septentrio_Graphic.pretty)(options "")(descr ""))
+  (lib (name Septentrio_ICs)(type KiCad)(uri ${KIPRJMOD}/../library/Septentrio_ICs.pretty)(options "")(descr ""))
+  (lib (name Septentrio_Modules)(type KiCad)(uri ${KIPRJMOD}/../library/Septentrio_Modules.pretty)(options "")(descr ""))
+  (lib (name Septentrio_Passive)(type KiCad)(uri ${KIPRJMOD}/../library/Septentrio_Passive.pretty)(options "")(descr ""))
+)

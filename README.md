@@ -10,7 +10,7 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) & [OSHW 
 
 # What is mowi?
 
-**The mowi is an Open Soure hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
+**The mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
 
 <img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
 
@@ -52,11 +52,22 @@ Within this project, we have used the manufacturing and assembly services of Eur
 
 ---
 
-# How to use mowi?
+# Deliverables
 
-## Basic connection
-## Wireless connection
-## RTK setup
+This project makes the following deliverables for both integrators and designers of systems around Septentrio's mosaic modules.
+
+| **Path** | **Description** |
+|:--|:--|
+| `mowi/3Doutput/` | Rendered `RWL` and `STP` 3D models of the mowi. Basic `.png` exports included. |
+| `mowi/designFiles/` | Efuse calculator `.xlsm` scheet and mowi's formfactor `.svg` templates. |
+| `mowi/fabrication/boms/` | Vanilla KiCad and slightly modified `.csv` bills of material togehter with [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom) `.html` bom. |
+| `mowi/fabrication/eurocircuits/` | Should include ready-to-order [EuroCircuits](https://www.eurocircuits.com/) files in the recent feature. |
+| `mowi/fabrication/gerbers/` | Exported gerber files of the mowi board. |
+| `mowi/library/Septentrio_<xxx>.pretty/` | Septentrio's KiCad footprints libraries divided into groups denoted by `<xxx>`. |
+| `mowi/library/Septentrio_packages3D/` | `STP` 3D models linked to Septentrio's KiCad footprints libraries. |
+| `mowi/library/Septentrio_symbols/` | Septentrio's KiCad symbols library. |
+| `mowi/readmeSource/` | Source files for this readme file. |
+| `mowi/schematic/` | Electrical schematics `.pdf` export. Separate sheets and merged version present. |
 
 ---
 

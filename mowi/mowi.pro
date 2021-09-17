@@ -1,4 +1,4 @@
-update=08/11/21 16:07:11
+update=Fri 17 Sep 2021 10:16:46 PM CEST
 version=1
 last_client=kicad
 [general]
@@ -12,16 +12,6 @@ NetIExt=net
 version=1
 LibDir=
 [eeschema/libraries]
-[schematic_editor]
-version=1
-PageLayoutDescrFile=C:/Users/geib/Documents/mosaicIoT/KiCad/mowi_PLDF.kicad_wks
-PlotDirectoryName=schematic/
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=Pcbnew
-SpiceAjustPassiveValues=0
-LabSize=50
-ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=C:/Users/geib/Documents/mosaicIoT/library/mowi_PLDF.kicad_wks
@@ -317,3 +307,13 @@ uViaDrill=0.15
 dPairWidth=0.15
 dPairGap=0.193
 dPairViaGap=0.25
+[schematic_editor]
+version=1
+PageLayoutDescrFile=C:/Users/geib/Documents/mosaicIoT/KiCad/mowi_PLDF.kicad_wks
+PlotDirectoryName=../schematic/
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceAjustPassiveValues=0
+LabSize=50
+ERC_TestSimilarLabels=1

@@ -20,6 +20,18 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 
 ---
 
+# Table of contents
+
+- [What is mowi?](#what-is-mowi)
+- [Table of contents](#table-of-contents)
+- [What is the mosaic module?](#what-is-the-mosaic-module)
+- [How to use mowi?](#how-to-use-mowi)
+- [How to produce mowi?](#how-to-produce-mowi)
+- [Deliverables](#deliverables)
+- [Mowi user documentation](#mowi-user-documentation)
+
+---
+
 # What is the mosaic module?
 
 <img align="right" src="https://www.septentrio.com/sites/default/files/styles/extralarge/public/2021-03/mosaic-Sx-module-front-back.PNG" width="25%">
@@ -37,6 +49,10 @@ The mosaic's product range comes with four different versions. Their key feature
 | L-band | :white_check_mark: |   |   | :white_check_mark:
 | RTK | :white_check_mark: | :white_check_mark: |   | :white_check_mark:
 | Timing receiver |   |   | :white_check_mark: |
+
+---
+
+# How to use mowi?
 
 ---
 

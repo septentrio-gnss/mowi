@@ -12,11 +12,15 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) & [OSHW 
 
 **The mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
 
-<img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
+<p align="center">
+ <img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
+</p>
 
 To support an easy-to-use evaluation and offer a high connectivity, the mowi exposes various interfaces. This includes four JST lock connectors compatible with Pixhawk, external GNSS, or other Septentrio's modules. Shared USB micro B port with an ESP dedicated autoflash circuitry for convenient programming. Support of single or dual antenna setup in MMCX or U.FL connectors. In-build eMMC device for easy data logging. And a separate SMA connector for an external WiFi/Bluetooth antenna. On top of that, the mowi comes with various perks, such as indication LEDs, selectable TTL voltages, or support for external sensors and other advanced circuitry.
 
-<img src="readmeSource/mowi_drawio_interfaces.png" width="60%">
+<p align="center">
+ <img src="readmeSource/mowi_drawio_interfaces.png" width="60%">
+</p>
 
 ---
 
@@ -34,8 +38,10 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 
 # What is the mosaic module?
 
-<img align="right" src="https://www.septentrio.com/sites/default/files/styles/extralarge/public/2021-03/mosaic-Sx-module-front-back.PNG" width="25%">
-
+<p align="center">
+ <img align="right" src="https://www.septentrio.com/sites/default/files/styles/extralarge/public/2021-03/mosaic-Sx-module-front-back.PNG" width="25%">
+</p>
+ 
 **[Mosaic modules](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules) are Septentrio's small-size and low-power GNSS receiver modules ideal for providing highly accurate positions.** Mosaic modules integrate the latest generation of GNSS technology, delivering highly accurate positions with minimal power consumption. While compact in size they fully retain the high-reliability and exceptional accuracy performance that Septentrio receivers are known for. True multi-frequency multi-constellation technology gives our module receivers access to every possible signal from all available GNSS satellite constellations including the U.S. GPS, European Galileo, Russian GLONASS, as well BeiDou, QZSS and NavIC. [Septentrio’s advanced field-proven algorithms](https://www.septentrio.com/en/company/septentrio-gnss-technology) exploit this signal diversity to deliver maximum positioning availability and reference network compatibility.
 
 The mosaic's product range comes with four different versions. Their key features and differences are listed in the following table:
@@ -62,7 +68,55 @@ Few external attachments have to be provided to enable mowi's full functionality
  3. Connect a GNSS antenna to mowi's primary MMCX connector designated as `MAIN`. An ordinary talisman antenna was used through the following examples.
  4. (optional, only for mowi with mosaic-H): Connect a GNSS antenna to mowi's secondary MMCX connector designated as 'AUX'.
 
-Steps 1. and 2. can be skipped when mowi with the ESP32-WROVER-E module is used. As this module facilitates an inbuild WiFi antenna, there is no need for an external one.
+:information_source: Steps 1. and 2. can be skipped when mowi with the ESP32-WROVER-E module is used. As this module facilitates an inbuild WiFi antenna, there is no need for an external one.
+
+## Basic connection
+
+The easiest way of communicating with mowi is through its USB interface. This example shows how to do so step by step while illustrating and explaining some basic functionality of the mosaic and ESP modules.
+
+Connect mowi to your PC using a USB micro-B cable. Once attached, you should be able to see three new USB devices in your system. In the Linux terminal, run `lsusb` command to check it out. You should see something similar to the following image, where the unblurred devices correspond respectively to i) ESP's UART bridge, ii) mosaic, and iii) mowi's USB HUB:
+
+<p align="center">
+ <img src="readmeSource/basic_connection_lsusb.png" width="100%">
+</p>
+
+By default, the mosaic module supports Ethernet-over-USB. Therefore the easiest way how to access its information and configuration is through your internet browser. To do so, simply open the `192.168.3.1.` IP address in your favorite browser and automatically enter the mosaic's web interface. In a case of a happily running mowi, you should see something similar:
+
+<p align="center">
+ <img src="readmeSource/basic_connection_web.png" width="75%">
+</p>
+
+Another simple option of communication with the mosaic module is through its COM ports. These ports should be visible in your system as `ACM0` and `ACM1`. Use your favorite serial terminal (such as Putty or Moserial) and the following settings to establish a connection:
+
+| port | baud rate | data bits | stop bits | parity | flow control |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| ACM0 / ACM1 | 115200 | 8 | 1 | no | none |
+
+Now you can command mosaic with a command line interface outline. For more information about syntax, replies, and commands tables, check section 3.1 in mosaic-X5 Reference Guide. To quickly test this interface, you can command mosaic to turn the `GP1` LED on and off. To do so, send the following two commands throughout the serial terminal:
+
+`sgpf, GP1, Output, none, LevelHigh`<br/>
+`sgpf, GP1, Output, none, LevelLow`
+
+Not only the green `GP1` LED goes on and off again, but you should also see the following mosaic's response in your serial terminal:
+
+<p align="center">
+ <img src="readmeSource/basic_connection_mosaic_putty.png" width="100%">
+</p>
+
+After successfully establishing communication with mosaic, the ESP module is the last remaining challenge. Thanks to the mowi's inbuild UART bridge, the communication can be established through a `USB0` COM port. Use again your favorite serial terminal with the following parameters:
+
+| port | baud rate | data bits | stop bits | parity | flow control |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| USB0 | 115200 | 8 | 1 | no | none |
+
+After establishing this connection, you should be able to receive debug data from the ESP module. By default (from factory), the ESP32-WROVER is flashed with Espressive's ESP-AT command firmware. To quickly test this interface, you can press the ESP's reset button designated by `E.RST`. After doing so, you should see a reboot log similar to this one:
+
+<p align="center">
+ <img src="readmeSource/basic_connection_esp_putty.png" width="100%">
+</p>
+
+
+:information_source: The Espressive's ESP-AT firmware does not support the ESP's UART0 by default. Therefore, sending AT commands through the USB interface with the ESP's default factory firmware is impossible.
 
 ---
 
@@ -103,8 +157,10 @@ The following section lists the most important design specifications of the mowi
 ## General interfaces
 To support an easy-to-use evaluation and offer a high connectivity, the mowi exposes various interfaces.
 
-<img src="readmeSource/mowi_drawio_interfaces.png" width="60%">
-
+<p align="center">
+ <img src="readmeSource/mowi_drawio_interfaces.png" width="60%">
+</p>
+ 
 * **USB interface** maintained by an onboard high-speed USB HUB. Its purpose is to enable mosaic or/and ESP connectivity via a single micro USB B cable. The communication between the HUB and the ESP is provided by an FTDI bridge chip, connected directly to the ESP's `UART0`. Additional auto-download circuitry is controlled by the FTDI chip enabling easy and convenient flashing. However, two **reset and boot buttons**, typical for the ESP applications, are available if a flash through UART is preferred or a manual reboot is needed.
 * **JST lock connectors** serves as general and robust points of connectivity. Two of them are dedicated to the mosaic alone: i) a PIXHAWK compatible connector exposing the mosaic's `COM1` port with HW flow control, and ii) universal mosaic connector offering additional functionality of external trigger `EventA`, precise timekeeping with PPS output `PPSO` and communication via `COM3` port. The last JST connector is dedicated to ESP and exposes its `UART1` with HW flow control. One of the possible use cases for this connector is a link to an external GSM module.
 * **Dual GNSS antenna** connectors enables mowi's use for applications required heading and pitch/roll information. The mowi is available with more robust MMCX connectors or their compact U.FL replacement. These options are exclusive - the mowi should be stuffed with one or other type of GNSS connectors.
@@ -115,11 +171,15 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 ## Pinout
 The images below show the pinout of the mowi’s connectors (and LEDs). Even though most of the labels follow the mosaic’s and ESP’s datasheets, the following remarks are required: LED `PWRLED` become active when the main 3.3V power line is active, LED `WIFILED` is driven by ESP's pin `IO12`, and LED `BTLED` is driven by ESP's pin `IO13`.
 
-<img src="readmeSource/mowi_drawio_pinout.png" width="55%">
+<p align="center">
+ <img src="readmeSource/mowi_drawio_pinout.png" width="55%">
+</p>
 
 Expect the main connectors, two auxiliary 2.54mm headers are present. The `ADV` stands for 'advanced' and belongs to the mosaic, while `SENS` means 'sensors' and connects to the ESP. Remarks: `ESP SEN. VP` and `ESP SEN. VN` connect to the ESP’s `SENSOR_VP` and `SENSOR_VN` pins respectively, and are input only. Pins `ESP SCL` and `ESP SDA` are connected to ESP’s `IO14` and `IO15` respectively. They are labeled as an I2C data bus, however, they might be used as GPIOs. Mind the integrated 4.7k pullups on these I2C pins.
 
-<img src="readmeSource/mowi_drawio_pinout_headers.png" width="55%">
+<p align="center">
+ <img src="readmeSource/mowi_drawio_pinout_headers.png" width="55%">
+</p>
 
 These images serve mostly as a fast lookup reference. For a proper understanding of internal wiring and connections, we recommend referring to schematic files in `.\schematic`.
  
@@ -129,8 +189,10 @@ The mowi board can be powered with a **3.3V or 5V power supply** connected to an
 
 It is possible to **change TTL voltages** of signals break out to the JST `MSC`and `ESP` connectors, and the `ADV` header. This can be done using a **TTL selector switch** separately for pins assigned to the mosaic, and the ESP. The available voltage levels are 3.3V and 5V. Please mind, that the JST `PXH` connector and the `SENS` header are 3.3V TTL only. The image below illustrates the TTL switch positions, while the table sums TTL voltage options:
 
-<img src="readmeSource/mowi_drawio_ttl.png" width="35%">
-
+<p align="center">
+ <img src="readmeSource/mowi_drawio_ttl.png" width="35%">
+</p>
+ 
 Connector | TTL option | TTL switch marking
 --- | --- | :-:
 JST `PXH` | 3.3V | na
@@ -144,21 +206,25 @@ All of the previously mentioned connectors together with the GNSS antenna connec
 ## Formfactor
 The mowi's shape, size, and mounting are based on the AsteRx-m3 standard developed by Septentrio N.V. This formfactor compatibility enable mowi to be used with another Septentrio products, such as [AsteRx-i D UAS](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/gnss-ins-solutions/asterx-iduas) or [evaluation kit](https://shop.septentrio.com/en/shop/mosaic-h-gnss-heading-module-evaluation-kit-2-gnss-antennae). The drawing below defines the AsteRx-m3 formfactor overall size and mounting:
 
-<img src="readmeSource/formfactor_dimensions_overall.png" width="40%">
+<p align="center">
+ <img src="readmeSource/formfactor_dimensions_overall.png" width="40%">
+</p>
 
 The following two drawings define mowi's shape and positions of individual connectors / LEDs:
 
-<p float="left">
-  <img src="readmeSource/formfactor_dimensions_top.png" width="40%">
-  <img src="readmeSource/formfactor_dimensions_bottom.png" width="40%">
+<p align="center">
+ <img src="readmeSource/formfactor_dimensions_top.png" width="40%">
+ <img src="readmeSource/formfactor_dimensions_bottom.png" width="40%">
 </p>
-  
+
 All dimensions marked in the previous drawings are in millimeters. For the exact shape please refer to `.\designFiles\formfactor_top.svg` and `.\...\formfactor_bottom.svg`, or check directly the KiCad Pcbnew file `.\mowi\mowi.kicad_pcb`.
 
 ## Circuitry layout
 Because of the formfactor size restrictions and a user-friendly layout, all of the supporting circuitry was placed from the bottom side of the mowi board. The only exception to this statement is the GNSS signal circuitry, populated and routed on the board's top side. This approach was determined by the controlled impedance requirements of this critical signal. The image below roughly illustrates the layout of separate subsystems:
 
-<img src="readmeSource/mowi_drawio_circuitry.png" width="60%">
+<p align="center">
+ <img src="readmeSource/mowi_drawio_circuitry.png" width="60%">
+</p>
 
 Legend: `1A` and `1B` - Ethernet PHYs of mosaic and ESP, `2` - USB HUB, `3` - FTDI bridge of ESP, `4` - eMMC device of mosaic, `5A` and `5B` - 3.3V buck/boost converter with eFuse and 5V boost converter, `6` - signal logic gates, TTL voltage translators and ESD protection devices, `7` - LED drivers.
 

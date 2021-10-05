@@ -54,6 +54,16 @@ The mosaic's product range comes with four different versions. Their key feature
 
 # How to use mowi?
 
+## Basic hardware setup
+
+Few external attachments have to be provided to enable mowi's full functionality. The following list sums them up. Note that it is not necessary to follow the order.
+ 1. Attach a short U.FL to U.FL cable to ESP Wrover's WiFi antenna connector and mowi's U.FL WiFi connector near `E.ANT` designator.
+ 2. Screw a WiFi antenna to mowi's WiFi SMA connector designated as `E.ANT`. This antenna should be explicitly designed for the 2.4 GHz band and facilitate a male SMA connector.
+ 3. Connect a GNSS antenna to mowi's primary MMCX connector designated as `MAIN`. An ordinary talisman antenna was used through the following examples.
+ 4. (optional, only for mowi with mosaic-H): Connect a GNSS antenna to mowi's secondary MMCX connector designated as 'AUX'.
+
+Steps 1. and 2. can be skipped when mowi with the ESP32-WROVER-E module is used. As this module facilitates an inbuild WiFi antenna, there is no need for an external one.
+
 ---
 
 # How to produce mowi?

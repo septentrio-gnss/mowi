@@ -80,7 +80,7 @@ Connect mowi to your PC using a USB micro-B cable. Once attached, you should be 
  <img src="readmeSource/basic_connection_lsusb.png" width="100%">
 </p>
 
-By default, the mosaic module supports Ethernet-over-USB. Therefore the easiest way how to access its information and configuration is through your internet browser. To do so, simply open the `192.168.3.1.` IP address in your favorite browser and automatically enter the mosaic's web interface. In a case of a happily running mowi, you should see something similar:
+By default, the mosaic module supports Ethernet-over-USB. Therefore the easiest way how to access its information and configuration is through your internet browser. To do so, simply open the [`192.168.3.1.`](192.168.3.1.) IP address in your favorite browser and automatically enter the mosaic's web interface. In a case of a happily running mowi, you should see something similar:
 
 <p align="center">
  <img src="readmeSource/basic_connection_web.png" width="75%">
@@ -109,7 +109,7 @@ After successfully establishing communication with mosaic, the ESP module is the
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | USB0 | 115200 | 8 | 1 | no | none |
 
-After establishing this connection, you should be able to receive debug data from the ESP module. By default (from factory), the ESP32-WROVER is flashed with Espressive's ESP-AT command firmware. To quickly test this interface, you can press the ESP's reset button designated by `E.RST`. After doing so, you should see a reboot log similar to this one:
+After establishing this connection, you should be able to receive debug data from the ESP module. By default (from factory), the ESP32-WROVER is flashed with [Espressive's ESP-AT command firmware](https://github.com/espressif/esp-at). To quickly test this interface, you can press the ESP's reset button designated by `E.RST`. After doing so, you should see a reboot log similar to this one:
 
 <p align="center">
  <img src="readmeSource/basic_connection_esp_putty.png" width="100%">

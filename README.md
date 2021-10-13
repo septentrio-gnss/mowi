@@ -37,24 +37,21 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 ---
 
 # What is the mosaic module?
+ 
+**[Mosaic modules](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules) are Septentrio's small-size and low-power GNSS receiver modules ideal for providing highly accurate positions.** Mosaic modules integrate the latest generation of GNSS technology, delivering highly accurate positions with minimal power consumption. While compact in size they fully retain the high-reliability and exceptional accuracy performance that Septentrio receivers are known for. True multi-frequency multi-constellation technology gives our module receivers access to every possible signal from all available GNSS satellite constellations including the U.S. GPS, European Galileo, Russian GLONASS, as well BeiDou, QZSS and NavIC. [Septentrio’s advanced field-proven algorithms](https://www.septentrio.com/en/company/septentrio-gnss-technology) exploit this signal diversity to deliver maximum positioning availability and reference network compatibility. The mosaic's product range comes with three different versions. Their key features and differences are listed in the following table:
 
 <p align="center">
  <img align="right" src="https://www.septentrio.com/sites/default/files/styles/extralarge/public/2021-03/mosaic-Sx-module-front-back.PNG" width="25%">
 </p>
- 
-**[Mosaic modules](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules) are Septentrio's small-size and low-power GNSS receiver modules ideal for providing highly accurate positions.** Mosaic modules integrate the latest generation of GNSS technology, delivering highly accurate positions with minimal power consumption. While compact in size they fully retain the high-reliability and exceptional accuracy performance that Septentrio receivers are known for. True multi-frequency multi-constellation technology gives our module receivers access to every possible signal from all available GNSS satellite constellations including the U.S. GPS, European Galileo, Russian GLONASS, as well BeiDou, QZSS and NavIC. [Septentrio’s advanced field-proven algorithms](https://www.septentrio.com/en/company/septentrio-gnss-technology) exploit this signal diversity to deliver maximum positioning availability and reference network compatibility.
 
-The mosaic's product range comes with four different versions. Their key features and differences are listed in the following table:
-
-| GNSS modules | [**mosaic-X5**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic) | [**mosaic-H**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic-h) | [**mosaic-T**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic-t) | [**mosaic-Sx**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic-sx)
-|:-:|:-:|:-:|:-:|:-:
-| Use case | base/rover | heading | timing | built-in corrections
-| Dual antenna |   | :white_check_mark: |   |
-| Built-in<br />corrections |   |   |   | :white_check_mark:
-| Heading |   | :white_check_mark: |   |
-| L-band | :white_check_mark: |   |   | :white_check_mark:
-| RTK | :white_check_mark: | :white_check_mark: |   | :white_check_mark:
-| Timing receiver |   |   | :white_check_mark: |
+| GNSS modules | [**mosaic-X5**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic) | [**mosaic-H**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic-h) | [**mosaic-T**](https://www.septentrio.com/en/products/gnss-receivers/rover-base-receivers/receivers-modules/mosaic-t) |
+|:-:|:-:|:-:|:-:|
+| Use case | base/rover | heading | timing |
+| Dual antenna |   | :heavy_check_mark: |
+| Heading |   | :heavy_check_mark: |
+| L-band | :heavy_check_mark: |   |
+| RTK | :heavy_check_mark: | :heavy_check_mark: |   |
+| Timing receiver |   |   | :heavy_check_mark: |
 
 ---
 

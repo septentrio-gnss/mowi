@@ -31,6 +31,7 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 - [What is the mosaic module?](#what-is-the-mosaic-module)
 - [How to use mowi?](#how-to-use-mowi)
 - [How to produce mowi?](#how-to-produce-mowi)
+- [Housing](#housing)
 - [Deliverables](#deliverables)
 - [Mowi user documentation](#mowi-user-documentation)
 
@@ -129,6 +130,19 @@ Within this project, we have used the manufacturing and assembly services of Eur
 
 ---
 
+# Housing
+
+A 3D model of mowi's housing designed to be printed by a 3D printer is available in `mowi/designFiles/housing`. Two `STL` files: `mowi_topprint_housing.stl` and `mowi_lowerprint_housing.stl` can be loaded directly into a slicer software. The model can be used with for `M3x8` screws that would self-thread into the plastic. If needed, brass threaded inserts can be added with a simple modification of the holes in the top `mowi_topprint_housing.stl`. Holes for LED's are not included in the model as many 3D printers are not very good at these small details. If needed, the hole can be drilled after printing or added to the `STL` model. Overall, this should be quite a simple print.
+
+<p align="center">
+ <img src="readmeSource/housing_model.png" width="58%">
+ <img align="right" img src="readmeSource/housing_photo.jpg" width="30.5%">
+</p>
+
+This housing was designed and evaluated by Silviu Taujan as a contribution to the mowi project.
+
+---
+
 # Deliverables
 
 This project makes the following deliverables for both integrators and designers of systems around Septentrio's mosaic modules.
@@ -136,7 +150,7 @@ This project makes the following deliverables for both integrators and designers
 | **Path** | **Description** |
 |:--|:--|
 | `mowi/3Doutput/` | Rendered `RWL` and `STP` 3D models of the mowi. Basic `.png` exports included. |
-| `mowi/designFiles/` | Efuse calculator `.xlsm` scheet and mowi's formfactor `.svg` templates. |
+| `mowi/designFiles/` | Efuse calculator `.xlsm` scheet, mowi's formfactor `.svg` templates and `STP` 3D models of housing ready to be printed. |
 | `mowi/fabrication/boms/` | Vanilla KiCad and slightly modified `.csv` bills of material togehter with [InteractiveHtmlBom](https://github.com/openscopeproject/InteractiveHtmlBom) `.html` bom. |
 | `mowi/fabrication/eurocircuits/` | Should include ready-to-order [EuroCircuits](https://www.eurocircuits.com/) files in the recent feature. |
 | `mowi/fabrication/gerbers/` | Exported gerber files of the mowi board. |

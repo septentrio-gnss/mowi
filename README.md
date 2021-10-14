@@ -139,7 +139,7 @@ A 3D model of mowi's housing designed to be printed by a 3D printer is available
  <img align="right" img src="readmeSource/housing_photo.jpg" width="30.5%">
 </p>
 
-This housing was designed and evaluated by Silviu Taujan as a contribution to the mowi project.
+This housing was designed and evaluated by [Silviu Taujan](https://www.linkedin.com/in/silviutaujan/ "Silviu's LinkedIn") as a contribution to the mowi project.
 
 ---
 

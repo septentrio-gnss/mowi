@@ -135,8 +135,7 @@ Within this project, we have used the manufacturing and assembly services of Eur
 A 3D model of mowi's housing designed to be printed by a 3D printer is available in `mowi/designFiles/housing`. Two `STL` files: `mowi_topprint_housing.stl` and `mowi_lowerprint_housing.stl` can be loaded directly into a slicer software. The model can be used with for `M3x8` screws that would self-thread into the plastic. If needed, brass threaded inserts can be added with a simple modification of the holes in the top `mowi_topprint_housing.stl`. Holes for LED's are not included in the model as many 3D printers are not very good at these small details. If needed, the hole can be drilled after printing or added to the `STL` model. Overall, this should be quite a simple print.
 
 <p align="center">
- <img src="readmeSource/housing_model.png" width="58%">
- <img align="right" img src="readmeSource/housing_photo.jpg" width="30.5%">
+ <img src="readmeSource/housing_merged.png" width="85%">
 </p>
 
 This housing was designed and evaluated by [Silviu Taujan](https://www.linkedin.com/in/silviutaujan/ "Silviu's LinkedIn") as a contribution to the mowi project.

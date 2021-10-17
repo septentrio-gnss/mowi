@@ -130,14 +130,14 @@ During experimenting with ESP, it might be useful to re-flash it with the defaul
 
 `$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 write_flash 0x0 factory_WROVER-32.bin`
 
-Where `--port` specifies a serial port to which ESP is connected, default `--baud`-rate, `0x0` memory address, and binary image`factory_WROVER-32.bin`.
+Where `--port` specifies a serial port to which ESP is connected, `--baud` is the default baud-rate, `0x0` is a targeted memory address, and `factory_WROVER-32.bin` is the binary image you are flashing to ESP.
 
 Mowi's built-in auto-download circuitry will set the appropriate boot mode and reset the ESP module for you. If you wish to control these processes manually, you can use two tactile switches designated as `E.RST` and `E.BOOT`. Holding down `E.BOOT` and then pressing `E.RST` initiates firmware download. Standalone press of `E.RST` resets the ESP module.
 
 After successful flashing, you should see a similar log. The `Hash of data verified.` message means that the flashed image was successfully verified.
 
 <p align="center">
- <img src="readmeSource/flashing_esp_pesptool.png" width="100%">
+ <img src="readmeSource/flashing_esp_esptool.png" width="100%">
 </p>
 
 The previous flash command is a minimal working example. For more robust flashing, please refer to the `esptool.py` manual. A more robust flashing can be executed with this command:

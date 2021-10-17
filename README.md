@@ -116,7 +116,7 @@ After establishing this connection, you should be able to receive debug data fro
 
 :information_source: The Espressive's ESP-AT firmware does not support the ESP's UART0 by default. Therefore, sending AT commands through the USB interface with the ESP's default factory firmware is impossible.
 
-## Flashing the ESP
+## Flashing ESP
 
 The true potential of mowi lies in running custom firmware on the ESP module. The most convenient way is to flash ESP with an already compiled binary image using Espressive's official `esptool.py` utility. If you are interested in building your own firmware, please skip to the following example (`Developing ESP firmware`) as it handles the flashing process for you.
 
@@ -126,21 +126,21 @@ To start flashing, you have to install the esptool utility. You can do so simply
 
 Mind that you need Python 2.7 or Python 3.4 or newer installed on your computer. For more details or to troubleshoot problems, visit [the esptool's GitHub repository](https://github.com/espressif/esptool/).
 
-During experimenting with ESP, it might be useful to re-flash it with the default (factory) firmware known as ESP-AT. To download this firmware go to [its official GitHub repository](https://github.com/espressif/esp-at/releases/tag/v2.2.0.0_esp32) and download the `.zip` folder dedicated to ESP32-WROVER module. After unzipping it, enter the `.\factory` subfolder and search for `factory_WROVER-32.bin`. This is the binary image you are about to flash to your ESP. To do so, connect your mowi to your computer via the USB cable and execute the following command in your terminal:
+During experimenting with ESP, it might be useful to re-flash it with the default (factory) firmware known as [ESP-AT](https://github.com/espressif/esp-at). To download this firmware go to [its official GitHub repository](https://github.com/espressif/esp-at/releases/tag/v2.2.0.0_esp32) and download the `.zip` folder dedicated to ESP32-WROVER module. After unzipping it, enter the `.\factory` subfolder and search for `factory_WROVER-32.bin`. This is the binary image you are about to flash to your ESP. To do so, connect your mowi to your computer via the USB cable and execute the following command in your terminal:
 
-`$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 write_flash 0x0 factory_WROVER-32.bin`
+`$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 write_flash -z 0x0 factory_WROVER-32.bin`
 
 Where `--port` specifies a serial port to which ESP is connected, `--baud` is the default baud-rate, `0x0` is a targeted memory address, and `factory_WROVER-32.bin` is the binary image you are flashing to ESP.
 
-Mowi's built-in auto-download circuitry will set the appropriate boot mode and reset the ESP module for you. If you wish to control these processes manually, you can use two tactile switches designated as `E.RST` and `E.BOOT`. Holding down `E.BOOT` and then pressing `E.RST` initiates firmware download. Standalone press of `E.RST` resets the ESP module.
+Mowi's built-in auto-download circuitry will set the appropriate boot mode and reset the ESP module for you. If you wish to control these processes manually, use two tactile switches designated as `E.RST` and `E.BOOT`. Holding down `E.BOOT` and then pressing `E.RST` initiates firmware download. Standalone press of `E.RST` resets the ESP module.
 
-After successful flashing, you should see a similar log. The `Hash of data verified.` message means that the flashed image was successfully verified.
+After successful flashing, you should see a similar log in your terminal. The `Hash of data verified.` message means that the flashed image was successfully verified.
 
 <p align="center">
  <img src="readmeSource/flashing_esp_esptool.png" width="100%">
 </p>
 
-The previous flash command is a minimal working example. For more robust flashing, please refer to the `esptool.py` manual. A more robust flashing can be executed with this command:
+:information_source:  The previous flash command is a minimal working example. For more robust flashing, please refer to the `esptool.py` manual. A more robust flashing can be executed with this command:
  
 `$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size 4MB 0x0 factory_WROVER-32.bin`
 

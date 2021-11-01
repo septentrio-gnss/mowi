@@ -10,7 +10,7 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) & [OSHW 
 
 # What is mowi?
 
-**The mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
+**Mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
 
 <p align="center">
  <img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
@@ -64,7 +64,7 @@ Few external attachments have to be provided to enable mowi's full functionality
  1. Attach a short U.FL to U.FL cable to ESP Wrover's WiFi antenna connector and mowi's U.FL WiFi connector near `E.ANT` designator.
  2. Screw a WiFi antenna to mowi's WiFi SMA connector designated as `E.ANT`. This antenna should be explicitly designed for the 2.4 GHz band and facilitate a male SMA connector.
  3. Connect a GNSS antenna to mowi's primary MMCX connector designated as `MAIN`. An ordinary talisman antenna was used through the following examples.
- 4. (optional, only for mowi with mosaic-H): Connect a GNSS antenna to mowi's secondary MMCX connector designated as 'AUX'.
+ 4. (optional, only for mowi with mosaic-H): Connect a GNSS antenna to mowi's secondary MMCX connector designated as `AUX`.
 
 :information_source: Steps 1. and 2. can be skipped when mowi with the ESP32-WROVER-E module is used. As this module facilitates an inbuild WiFi antenna, there is no need for an external one.
 
@@ -72,7 +72,7 @@ Few external attachments have to be provided to enable mowi's full functionality
 
 The easiest way of communicating with mowi is through its USB interface. This example shows how to do so step by step while illustrating and explaining some basic functionality of the mosaic and ESP modules.
 
-Connect mowi to your PC using a USB micro-B cable. Once attached, you should be able to see three new USB devices in your system. In the Linux terminal, run `lsusb` command to check it out. You should see something similar to the following image, where the unblurred devices correspond respectively to i) ESP's UART bridge, ii) mosaic, and iii) mowi's USB HUB:
+Connect mowi to your PC using a USB micro-B cable. Once attached, you should be able to see three new USB devices in your system. If you are using Linux, their drivers are installed automatically. On a Windows machine, you have to install one of the drivers manually. Download and install [CP210x Universal Windows Driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) from the ESP's UART bridge manufacturer website. After doing so, you can check these new USB devices in Windows Device Manager. On Linux, open a terminal and run `lsusb` command. You should see something similar to the following image, where the unblurred devices correspond respectively to i) ESP's UART bridge, ii) mosaic module, and iii) mowi's USB HUB:
 
 <p align="center">
  <img src="readmeSource/basic_connection_lsusb.png" width="100%">
@@ -113,6 +113,7 @@ After establishing this connection, you should be able to receive debug data fro
  <img src="readmeSource/basic_connection_esp_putty.png" width="100%">
 </p>
 
+:information_source: On Windows systems, mosaic's and ESP's ports are usually named `COMx`, where `x` stands for a randomly assigned number. Use `Control Panel >> Device Manager >> Ports` to determine which USB device is linked o which port (or brute-force it).
 
 :information_source: The Espressive's ESP-AT firmware does not support the ESP's UART0 by default. Therefore, sending AT commands through the USB interface with the ESP's default factory firmware is impossible.
 

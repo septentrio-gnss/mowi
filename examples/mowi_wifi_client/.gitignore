@@ -1,0 +1,9 @@
+# Ignore
+.vscode/
+sdkconfig
+build/
+
+# Allow
+!build/mowi_wifi_client.bin
+!build/bootloader/bootloader.bin
+!build/partition_table/partition-table.bin

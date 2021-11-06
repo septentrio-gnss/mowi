@@ -1,0 +1,36 @@
+menu "Mowi WiFi Client Configuration"
+
+    config MOWI_FLOW_CONTROL_QUEUE_TIMEOUT_MS 
+        int "Flow Control Quete Timeout [ms]"
+        default 100
+
+    config MOWI_FLOW_CONTROL_QUEUE_LENGTH
+        int "Flow Control Queue Lenght"
+        default 40
+
+    config MOWI_FLOW_CONTROL_WIFI_SEND_TIMEOUT_MS
+        int "Flow Comtrol WiFi Send Timeout [ms]"
+        default 100
+
+    config MOWI_MOSAIC_UART_PORT_NUM
+        int "ESP x Mosaic UART Port Number of ESP"
+        default 1
+
+    config MOWI_MOSAIC_UART_BUF_SIZE
+        int "ESP x Mosaic UART Buffer Size"
+        default 1024
+
+    config  MOWI_PROV_MGR_REMEMBER
+        bool "Remember previous state and skip provisioning"
+        default n
+
+    config MOWI_PROV_MGR_RESET_ON_FAILURE
+        bool "Reset provisioned state after failure"
+        default y
+
+    config MOWI_PROV_MGR_MAX_RETRY_CNT
+        int "Retries before reseting provisioned state"
+        default 5
+        depends on MOWI_PROV_MGR_RESET_ON_FAILURE
+
+endmenu

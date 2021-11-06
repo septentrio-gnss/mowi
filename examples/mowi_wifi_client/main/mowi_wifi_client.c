@@ -47,7 +47,6 @@ static bool wifi_is_connected = false;
 
 // qrcode generation resources
 #define PROV_QR_VERSION         "v1"
-#define PROV_TRANSPORT_SOFTAP   "softap"
 #define PROV_TRANSPORT_BLE      "ble"
 #define QRCODE_BASE_URL         "https://espressif.github.io/esp-jumpstart/qrcode.html"
 
@@ -401,8 +400,9 @@ static void initialize_wifi(void)
         ESP_LOGI(TAG, "Starting provisioning");
 
         // Set device name
-        char service_name[13];
-        snprintf(service_name, sizeof(service_name), "%s%02X", "PROV_MOWI_", eth_mac[5]);
+        char service_name[28];
+        snprintf(service_name, sizeof(service_name), "PROV_MOWI_%02X:%02X:%02X:%02X:%02X:%02X", 
+        eth_mac[0], eth_mac[1], eth_mac[2], eth_mac[3], eth_mac[4], eth_mac[5]);
 
         // Set security level
         wifi_prov_security_t security = WIFI_PROV_SECURITY_1;

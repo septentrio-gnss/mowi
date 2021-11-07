@@ -4,6 +4,7 @@
 
 # Allow
 /**/build/*
+!/**/build/mowi_wifi_basic.bin
 !/**/build/mowi_wifi_client.bin
 !/**/build/bootloader/**/
 !/**/build/partition_table/**/

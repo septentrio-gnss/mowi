@@ -1,0 +1,31 @@
+menu "Mowi WiFi Basic Configuration"
+
+    config MOWI_WIFI_SSID 
+        string "SSID of targeted Acces Point"
+        default "mowi_wifi_accpoint"
+
+    config MOWI_WIFI_PSWD 
+        string "Password of targeted Acces Point"
+        default "mowi_rocks"
+
+    config MOWI_FLOW_CONTROL_QUEUE_TIMEOUT_MS 
+        int "Flow Control Quete Timeout [ms]"
+        default 100
+
+    config MOWI_FLOW_CONTROL_QUEUE_LENGTH
+        int "Flow Control Queue Lenght"
+        default 40
+
+    config MOWI_FLOW_CONTROL_WIFI_SEND_TIMEOUT_MS
+        int "Flow Comtrol WiFi Send Timeout [ms]"
+        default 100
+
+    config MOWI_MOSAIC_UART_PORT_NUM
+        int "ESP x Mosaic UART Port Number of ESP"
+        default 1
+
+    config MOWI_MOSAIC_UART_BUF_SIZE
+        int "ESP x Mosaic UART Buffer Size"
+        default 1024
+
+endmenu

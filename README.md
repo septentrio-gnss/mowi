@@ -29,6 +29,7 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 - [What is mowi?](#what-is-mowi)
 - [Table of contents](#table-of-contents)
 - [What is the mosaic module?](#what-is-the-mosaic-module)
+- [How to set up mowi?](#how-to-set-up-mowi)
 - [How to use mowi?](#how-to-use-mowi)
 - [How to produce mowi?](#how-to-produce-mowi)
 - [Housing](#housing)
@@ -56,7 +57,7 @@ To support an easy-to-use evaluation and offer a high connectivity, the mowi exp
 
 ---
 
-# How to use mowi?
+# How to set up mowi?
 
 ## Basic hardware setup
 
@@ -140,6 +141,41 @@ Where `--port` specifies a serial port to which ESP is connected, `--baud` is th
 :information_source: The previous flash command is a minimal working example. For advanced flashing, please refer to [flash modes in the esptool's manual](https://github.com/espressif/esptool/#flash-modes). A more robust flashing can be executed with this command:
  
 `$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size 4MB 0x0 factory_WROVER-32.bin`
+
+---
+
+# How to use mowi?
+
+In this project, we provide not only the hardware design but also an example firmware. These examples are intended to demonstrate key features of mowi and deliver code that can be further used and modified. Espressifs [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html) is used as a development framework. The following examples are currently available:
+- `examples/mowi_wifi_basic` WiFi to Ethernet packet forwarding
+- `examples/mowi_wifi_client` WiFi to Ethernet packet forwarding with BLE based Provisioning
+
+## Basic WiFi connection
+
+An example named `mowi_wifi_basic` extends mosaic with full access to wireless internet by transparently forwarding internet packets. 
+
+The objective is to demonstrate how to set up an internet packet forwarding between mosaic's Ethernet and ESP's WiFi with respect to mosaic's MAC address. The ESP module is configured as a WiFi station connecting to a WiFi access point and forwarding all traffic to and from mosaic's Ethernet port. No actions are performed by ESP on layer 3 and higher layers. It is therefore expected that the targeted WiFi access point runs a DHCP server.
+
+The step-by-step functionality of this example can be described as follows:
+1. Initialize ESP's Ethernet driver and PHY chip.
+2. Configure mosaic's Ethernet through UART commands.
+3. Mask ESP's MAC address with the mosaic's one.
+4. Connect to the desired WiFi access point.
+5. Forward all internet traffic and maintain the connection.
+
+To run this example, you need to flash mowi with provided firmware. Credentials of the targeted WiFi access point are hardcoded in this case to `mowi_wifi_accpoint` as an SSID and `mowi_rocks` as a password. If you are okay with it, you can directly flash provided binaries. If not, you can easily modify the `menuconfig` file and recompile the code. Please refer to [steps 7 to 9 of ESP-IDF Get Started](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/#step-7-configure) for more information.
+
+To flash the provided binaries, connect mowi to your computer, navigate to `examples/mowi_wifi_basic/build`, and execute the following command (replace `PORT` accordingly to your system):
+
+`esptool.py -p PORT -b 460800 --before default_reset --after hard_reset --chip esp32 write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x10000 mowi_wifi_basic.bin 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin`
+
+After a successful connection to WiFi (indicated by the blue`WIFI` LED), you can reach the mosaic's WEB interface through an IP address assigned by the DHCP server. To figure it out, you can:
+- Look into the `Communication >> Ethernet` section of the mosaic's WEB interface through the USB connection.
+- Inspect your WiFi access point device (router, smartphone, etc.) settings/info.
+- Send a `$ getIPSettings` command to mosaic through one of the provided COM ports.
+- Search the example log streamed to the port used during flashing. Look for a log similar to this one: ``
+
+## Client WiFi connection
 
 ---
 

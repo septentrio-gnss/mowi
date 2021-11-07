@@ -135,18 +135,21 @@ static void eth_event_handler(void *arg, esp_event_base_t event_base, int32_t ev
 
 static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 { 
-    switch (event_id) {
-    case WIFI_EVENT_STA_CONNECTED:
-        ESP_LOGI(TAG, "WiFi connected");
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
+        esp_wifi_connect();
+    }
+
+    else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
+        ESP_LOGI(TAG, "WiFi connected with IP Address:" IPSTR, IP2STR(&event->ip_info.ip));
         wifi_is_connected = true;
         gpio_set_level(12, true);
 
         // Start forwarding WiFi and Ethernet data
         esp_wifi_internal_reg_rxcb(ESP_IF_WIFI_STA, pkt_wifi2eth);
+    }
 
-        break;
-
-    case WIFI_EVENT_STA_DISCONNECTED:
+    else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
         ESP_LOGI(TAG, "WiFi disconnected");
         wifi_is_connected = false;
         gpio_set_level(12, false);
@@ -154,10 +157,6 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
         // Stop forwarding WiFi and Ethernet data
         esp_wifi_internal_reg_rxcb(ESP_IF_WIFI_STA, NULL);
         esp_wifi_connect();
-        break;
-
-    default:
-        break;
     }
 }
 
@@ -207,7 +206,7 @@ static void initialize_uart(void)
 
 static void initialize_ethernet(void)
 {
-    ESP_ERROR_CHECK(esp_event_handler_register(ETH_EVENT, ESP_EVENT_ANY_ID, eth_event_handler, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_register(ETH_EVENT, ESP_EVENT_ANY_ID, &eth_event_handler, NULL));
     eth_mac_config_t mac_config = ETH_MAC_DEFAULT_CONFIG();
     eth_phy_config_t phy_config = ETH_PHY_DEFAULT_CONFIG();
     phy_config.phy_addr = 1;
@@ -274,11 +273,18 @@ static void initialize_ethernet(void)
 
 static void initialize_wifi(void)
 {
-    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, wifi_event_handler, NULL));
+    // Initialize TCP/IP
+    ESP_ERROR_CHECK(esp_netif_init());
 
-    // Initialize WiFi with default config
+    // Register event handler for WiFi and IP events
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL));
+
+    // Initialize WiFi including netif with default config
+    esp_netif_create_default_wifi_sta();
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+    ESP_ERROR_CHECK(esp_wifi_set_mac(WIFI_IF_STA, eth_mac));
 
     // Create WiFi config
     wifi_config_t wifi_config = {
@@ -288,10 +294,8 @@ static void initialize_wifi(void)
         },
     };
 
-    // Start WiFi station
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    // Set WiFi config and start WiFi station
     ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
-    ESP_ERROR_CHECK(esp_wifi_set_mac(WIFI_IF_STA, eth_mac));
     ESP_ERROR_CHECK(esp_wifi_start());
 }
 
@@ -335,7 +339,4 @@ void app_main(void)
     // Initialize main peripherals
     initialize_ethernet();
     initialize_wifi();
-
-    // Connect to WiFi station
-    esp_wifi_connect();
 }

@@ -1,5 +1,0 @@
-source "/home/filip/esp/esp-idf/components/app_update/Kconfig.projbuild"
-source "/home/filip/esp/esp-idf/components/bootloader/Kconfig.projbuild"
-source "/home/filip/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
-source "/home/filip/esp/esp-idf/components/partition_table/Kconfig.projbuild"
-source "/home/filip/Documents/Septentrio/mowi/examples/mowi_wifi_client/main/Kconfig.projbuild"

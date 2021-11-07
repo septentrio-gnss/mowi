@@ -1,7 +1,0 @@
-source "/home/filip/esp/esp-idf/components/efuse/Kconfig"
-source "/home/filip/esp/esp-idf/components/esp32/Kconfig"
-source "/home/filip/esp/esp-idf/components/esp_common/Kconfig"
-source "/home/filip/esp/esp-idf/components/esp_system/Kconfig"
-source "/home/filip/esp/esp-idf/components/log/Kconfig"
-source "/home/filip/esp/esp-idf/components/newlib/Kconfig"
-source "/home/filip/esp/esp-idf/components/spi_flash/Kconfig"

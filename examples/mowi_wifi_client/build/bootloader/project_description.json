@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/home/filip/esp/esp-idf/components/bootloader/subproject",
+    "build_dir":          "/home/filip/Documents/Septentrio/mowi/examples/mowi_wifi_client/build/bootloader",
+    "config_file":        "/home/filip/Documents/Septentrio/mowi/examples/mowi_wifi_client/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.3.1-dirty",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/home/filip/esp/esp-idf/components/efuse/Kconfig;/home/filip/esp/esp-idf/components/esp32/Kconfig;/home/filip/esp/esp-idf/components/esp_common/Kconfig;/home/filip/esp/esp-idf/components/esp_system/Kconfig;/home/filip/esp/esp-idf/components/log/Kconfig;/home/filip/esp/esp-idf/components/newlib/Kconfig;/home/filip/esp/esp-idf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/home/filip/esp/esp-idf/components/bootloader/Kconfig.projbuild;/home/filip/esp/esp-idf/components/esptool_py/Kconfig.projbuild;/home/filip/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_hw_support", "esp_rom", "esp_system", "esptool_py", "hal", "log", "main", "micro-ecc", "newlib", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/home/filip/esp/esp-idf/components/bootloader", "/home/filip/esp/esp-idf/components/bootloader_support", "/home/filip/esp/esp-idf/components/efuse", "/home/filip/esp/esp-idf/components/esp32", "/home/filip/esp/esp-idf/components/esp_common", "/home/filip/esp/esp-idf/components/esp_hw_support", "/home/filip/esp/esp-idf/components/esp_rom", "/home/filip/esp/esp-idf/components/esp_system", "/home/filip/esp/esp-idf/components/esptool_py", "/home/filip/esp/esp-idf/components/hal", "/home/filip/esp/esp-idf/components/log", "/home/filip/esp/esp-idf/components/bootloader/subproject/main", "/home/filip/esp/esp-idf/components/bootloader/subproject/components/micro-ecc", "/home/filip/esp/esp-idf/components/newlib", "/home/filip/esp/esp-idf/components/partition_table", "/home/filip/esp/esp-idf/components/soc", "/home/filip/esp/esp-idf/components/spi_flash", "/home/filip/esp/esp-idf/components/xtensa", "" ]
+}

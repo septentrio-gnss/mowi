@@ -30,6 +30,7 @@
 #include <esp_private/wifi.h>
 #include <driver/gpio.h>
 #include <driver/uart.h>
+#include <hal/uart_hal.h>
 
 #include <wifi_provisioning/manager.h>
 #include <wifi_provisioning/scheme_ble.h>
@@ -282,7 +283,7 @@ static void initialize_led(void)
 static void initialize_uart(void)
 {
     // Configure UART parameters
-    uart_config_t uart_config = {
+    uart_config_t uart_param = {
         .baud_rate = 115200,
         .data_bits = UART_DATA_8_BITS,
         .parity    = UART_PARITY_DISABLE,
@@ -290,15 +291,17 @@ static void initialize_uart(void)
         .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
         .source_clk = UART_SCLK_APB,
     };
-    
-    int intr_alloc_flags = 0;
-#if CONFIG_UART_ISR_IN_IRAM
-    intr_alloc_flags = ESP_INTR_FLAG_IRAM;
-#endif
 
-    ESP_ERROR_CHECK(uart_driver_install(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, CONFIG_MOWI_MOSAIC_UART_BUF_SIZE * 2, 0, 0, NULL, intr_alloc_flags));
-    ESP_ERROR_CHECK(uart_param_config(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, &uart_config));
+    // Install UART driver, set Tx FIFO to 0 to send data immediately
+    ESP_ERROR_CHECK(uart_driver_install(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, CONFIG_MOWI_MOSAIC_UART_BUF_SIZE, 0, 0, NULL, 0));
+    ESP_ERROR_CHECK(uart_param_config(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, &uart_param));
     ESP_ERROR_CHECK(uart_set_pin(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, 2, 4, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+
+    // Redundant parameters setting - bug in ESP-IDF workaround 
+    uart_set_baudrate(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, 115200);
+    uart_set_word_length(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, UART_DATA_8_BITS);
+    uart_set_parity(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, UART_PARITY_DISABLE); 
+    uart_set_stop_bits(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, UART_STOP_BITS_1);
 }
 
 static void initialize_ethernet(void)
@@ -320,49 +323,52 @@ static void initialize_ethernet(void)
 
     bool eth_promiscuous = true;
     esp_eth_ioctl(eth_handle, ETH_CMD_S_PROMISCUOUS, &eth_promiscuous);
-    esp_eth_start(eth_handle);
+
+    ESP_LOGI(TAG, "Configuring Mosaic Ethernet DHCP");
 
     // Create a temporary buffer for the incoming data
     uint8_t *uart_buf = (uint8_t *) calloc(CONFIG_MOWI_MOSAIC_UART_BUF_SIZE, sizeof(uint8_t));
+    int len = 0;
 
-    // Disable Mosaic Ethernet
-    ESP_ERROR_CHECK(uart_flush(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
+    // Disable Mosaic Ethernet - iterate to initialize connection
+    ESP_ERROR_CHECK(uart_flush_input(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
     uart_write_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, (char*)"seth,off\n\r", 10);
-    int len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 8, 200 / portTICK_PERIOD_MS);
+    len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 8, 500);
     if(len <= 0 || strncmp((char *)uart_buf, "$R: seth", 8) != 0) {
         ESP_LOGE(TAG, "Disable Mosaic Ethernet responce failed");
         esp_restart();
     }
 
-    vTaskDelay(50 / portTICK_PERIOD_MS);
-
     // Set Mosaic Ethernet DHCP with MTU
-    ESP_ERROR_CHECK(uart_flush(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
+    ESP_ERROR_CHECK(uart_flush_input(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
     uart_write_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, (char*)"setIPSettings,DHCP,,,,,,,1500\n\r", 31);
-    len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 17, 200 / portTICK_PERIOD_MS);
+    len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 17, 500);
     if(len <= 0 || strncmp((char *)uart_buf, "$R: setIPSettings", 17) != 0) {
         ESP_LOGE(TAG, "Set Mosaic Ethernet DHCP responce failed");
         esp_restart();
     }
-    ESP_LOGI(TAG, "Mosaic Ethernet DHCP configured");
 
-    vTaskDelay(50 / portTICK_PERIOD_MS);
+    // Start ESP ethernet
+    esp_eth_start(eth_handle);
 
     // Enable Mosaic Ethernet
-    ESP_ERROR_CHECK(uart_flush(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
+    ESP_ERROR_CHECK(uart_flush_input(CONFIG_MOWI_MOSAIC_UART_PORT_NUM));
     uart_write_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, (char*)"seth,on\n\r", 9);
-    len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 8, 200 / portTICK_PERIOD_MS);
+    len = uart_read_bytes(CONFIG_MOWI_MOSAIC_UART_PORT_NUM, uart_buf, 8, 500);
     if(len <= 0 || strncmp((char *)uart_buf, "$R: seth", 8) != 0) {
         ESP_LOGE(TAG, "Enable Mosaic Ethernet responce failed");
         esp_restart();
     }
 
-    // Temporary buffer no longer needed
+    // Ethernet configured, temporary buffer no longer needed
+    ESP_LOGI(TAG, "Mosaic Ethernet DHCP configured");
     free(uart_buf);
 
-    // Wait for 
+    // Wait for Mosaic to report ist MAC address
     ESP_LOGI(TAG, "Waiting for Mosaic Ethernet MAC address");
-    while(!eth_mac_is_set) {}
+    while(!eth_mac_is_set) {
+        vTaskDelay(10);
+    }
 }
 
 static void initialize_wifi(void)

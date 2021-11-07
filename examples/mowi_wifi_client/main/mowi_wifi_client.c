@@ -1,4 +1,4 @@
-/* mowi_wifi_client (Wi-Fi to Ethernet packet forwarding with BLE based Provisioning)
+/* mowi_wifi_client (WiFi to Ethernet packet forwarding with BLE based Provisioning)
 
    This example code is licensed under CC BY-SA 4.0 and OSHW Definition 1.0.
 
@@ -183,7 +183,7 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
                 break;
             case WIFI_PROV_CRED_RECV: {
                 wifi_sta_config_t *wifi_sta_cfg = (wifi_sta_config_t *)event_data;
-                ESP_LOGI(TAG, "Received Wi-Fi credentials"
+                ESP_LOGI(TAG, "Received WiFi credentials"
                          "\n\tSSID     : %s\n\tPassword : %s",
                          (const char *) wifi_sta_cfg->ssid,
                          (const char *) wifi_sta_cfg->password);
@@ -194,7 +194,7 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
                 ESP_LOGE(TAG, "Provisioning failed!\n\tReason : %s"
                          "\n\tPlease reset to factory and retry provisioning",
                          (*reason == WIFI_PROV_STA_AUTH_ERROR) ?
-                         "Wi-Fi station authentication failed" : "Wi-Fi access-point not found");
+                         "WiFi station authentication failed" : "WiFi access-point not found");
 #ifdef CONFIG_MOWI_PROV_MGR_RESET_ON_FAILURE
                 retries++;
                 if (retries >= CONFIG_MOWI_PROV_MGR_MAX_RETRY_CNT) {
@@ -226,7 +226,7 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
     
     else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
-        ESP_LOGI(TAG, "Connected with IP Address:" IPSTR, IP2STR(&event->ip_info.ip));
+        ESP_LOGI(TAG, "WiFi connected with IP Address:" IPSTR, IP2STR(&event->ip_info.ip));
         wifi_is_connected = true;
         gpio_set_level(12, true);
 
@@ -235,10 +235,11 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
     }
     
     else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        ESP_LOGI(TAG, "Disconnected. Connecting to the AP again...");
+        ESP_LOGI(TAG, "WiFi disconnected");
         wifi_is_connected = false;
         gpio_set_level(12, false);
 
+        // Stop forwarding WiFi and Ethernet data
         esp_wifi_internal_reg_rxcb(ESP_IF_WIFI_STA, NULL);
         esp_wifi_connect();
     }
@@ -376,12 +377,12 @@ static void initialize_wifi(void)
     // Initialize TCP/IP
     ESP_ERROR_CHECK(esp_netif_init());
 
-    // Register event handler for Wi-Fi, IP and Provisioning related events
+    // Register event handler for WiFi, IP and Provisioning related events
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_PROV_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
     ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL));
 
-    // Initialize Wi-Fi including netif with default config
+    // Initialize WiFi including netif with default config
     esp_netif_create_default_wifi_sta();
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
@@ -431,12 +432,12 @@ static void initialize_wifi(void)
     }
     
     else {
-        ESP_LOGI(TAG, "Already provisioned, starting Wi-Fi STA");
+        ESP_LOGI(TAG, "Already provisioned, starting WiFi STA");
 
         // Release provisioning resources
         wifi_prov_mgr_deinit();
 
-        // Start Wi-Fi station
+        // Start WiFi station
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
         ESP_ERROR_CHECK(esp_wifi_set_mac(WIFI_IF_STA, eth_mac));
         ESP_ERROR_CHECK(esp_wifi_start());

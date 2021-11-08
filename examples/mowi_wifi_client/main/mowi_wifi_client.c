@@ -154,8 +154,8 @@ static void eth_event_handler(void *arg, esp_event_base_t event_base, int32_t ev
         break;
 
     case ETHERNET_EVENT_DISCONNECTED:
-        ESP_LOGI(TAG, "Ethernet Link Down");
-        eth_mac_is_set = false;
+        ESP_LOGE(TAG, "Ethernet Link Down");
+        esp_restart();
         break;
 
     case ETHERNET_EVENT_START:
@@ -370,6 +370,11 @@ static void initialize_ethernet(void)
     while(!eth_mac_is_set) {
         vTaskDelay(10);
     }
+
+    // Mask ESP MAC addres with Mosaic one
+    ESP_ERROR_CHECK(esp_base_mac_addr_set(eth_mac));
+    ESP_LOGI(TAG, "ESP MAC address set as: %02X:%02X:%02X:%02X:%02X:%02X", 
+        eth_mac[0], eth_mac[1], eth_mac[2], eth_mac[3], eth_mac[4], eth_mac[5]);
 }
 
 static void initialize_wifi(void)
@@ -386,7 +391,6 @@ static void initialize_wifi(void)
     esp_netif_create_default_wifi_sta();
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-    ESP_ERROR_CHECK(esp_wifi_set_mac(WIFI_IF_STA, eth_mac));
 
     // Configure provisioning manager
     wifi_prov_mgr_config_t config = {
@@ -409,7 +413,7 @@ static void initialize_wifi(void)
         // Set device name
         char service_name[28];
         snprintf(service_name, sizeof(service_name), "PROV_MOWI_%02X:%02X:%02X:%02X:%02X:%02X", 
-        eth_mac[0], eth_mac[1], eth_mac[2], eth_mac[3], eth_mac[4], eth_mac[5]);
+            eth_mac[0], eth_mac[1], eth_mac[2], eth_mac[3], eth_mac[4], eth_mac[5]);
 
         // Set security level
         wifi_prov_security_t security = WIFI_PROV_SECURITY_1;
@@ -439,7 +443,6 @@ static void initialize_wifi(void)
 
         // Start WiFi station
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-        ESP_ERROR_CHECK(esp_wifi_set_mac(WIFI_IF_STA, eth_mac));
         ESP_ERROR_CHECK(esp_wifi_start());
     }
 }

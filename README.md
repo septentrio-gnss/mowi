@@ -189,14 +189,16 @@ To start with this example, open the BLE Provisioning app and click on `Provisio
  <img src="readmeSource/examples_wifi_client_qrcode.png" width="85%">
 </p>
 
-The second option is through searching for available Bluetooth devices. Press `I don't have a QR code` and wait for the search to complete. You should see your mowi listed as `PROV_MOWI_MAC` where `MAC` is your mowi's actual MAC address. After this successful connection, the ESP module will automatically search for available WiFi networks and report findings to your BLE app. Now you just have to select your desired WiFi network and enter its password. The ESP module will then automatically connect to it and forwards all internet packets to and from the mosaic. An example of both Bluetooth and WiFi network searches could be:
+The second option is through searching for available Bluetooth devices. Press `I don't have a QR code` and wait for the search to complete. You should see your mowi listed as `PROV_MOWI_MAC` where `MAC` is your mowi's actual MAC address. Click on it and just confirm the default proof of possession PIN (`abcd1234`) by pressing `Next`. 
+
+After this successful connection, the ESP module will automatically search for available WiFi networks and report findings to your BLE app. Now you just have to select your desired WiFi network and enter its password. The ESP module will then automatically connect to it and forwards all internet packets to and from the mosaic. An example of both Bluetooth and WiFi network searches could be:
 
 <p align="center">
  <img src="readmeSource/examples_wifi_client_search_mockup.png" width="30%">
  <img src="readmeSource/examples_wifi_client_networks_mockup.png" width="30%">
 </p>
 
-To flash the provided binaries, connect mowi to your computer, navigate to examples/mowi_wifi_client/build, and execute the following command (replace PORT accordingly to your system):
+To flash the provided binaries, connect mowi to your computer, navigate to `examples/mowi_wifi_client/build`, and execute the following command (replace `PORT` accordingly to your system):
 
 `esptool.py -p PORT -b 460800 --before default_reset --after hard_reset --chip esp32 write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x10000 mowi_wifi_client.bin 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin`
 

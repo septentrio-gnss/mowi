@@ -22,6 +22,6 @@ menu "Mowi WiFi Client Configuration"
 
     config  MOWI_PROV_MGR_REMEMBER
         bool "Remember previous state and skip provisioning"
-        default n
+        default y
 
 endmenu

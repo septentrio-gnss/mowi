@@ -24,13 +24,4 @@ menu "Mowi WiFi Client Configuration"
         bool "Remember previous state and skip provisioning"
         default n
 
-    config MOWI_PROV_MGR_RESET_ON_FAILURE
-        bool "Reset provisioned state after failure"
-        default y
-
-    config MOWI_PROV_MGR_MAX_RETRY_CNT
-        int "Retries before reseting provisioned state"
-        default 5
-        depends on MOWI_PROV_MGR_RESET_ON_FAILURE
-
 endmenu

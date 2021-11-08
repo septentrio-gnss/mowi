@@ -173,50 +173,47 @@ static void eth_event_handler(void *arg, esp_event_base_t event_base, int32_t ev
 
 static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
-#ifdef CONFIG_MOWI_PROV_MGR_RESET_ON_FAILURE
-    static int retries;
-#endif
     if (event_base == WIFI_PROV_EVENT) {
         switch (event_id) {
-            case WIFI_PROV_START:
-                ESP_LOGI(TAG, "Provisioning started");
-                break;
-            case WIFI_PROV_CRED_RECV: {
-                wifi_sta_config_t *wifi_sta_cfg = (wifi_sta_config_t *)event_data;
-                ESP_LOGI(TAG, "Received WiFi credentials"
-                         "\n\tSSID     : %s\n\tPassword : %s",
-                         (const char *) wifi_sta_cfg->ssid,
-                         (const char *) wifi_sta_cfg->password);
-                break;
-            }
-            case WIFI_PROV_CRED_FAIL: {
-                wifi_prov_sta_fail_reason_t *reason = (wifi_prov_sta_fail_reason_t *)event_data;
-                ESP_LOGE(TAG, "Provisioning failed!\n\tReason : %s"
-                         "\n\tPlease reset to factory and retry provisioning",
-                         (*reason == WIFI_PROV_STA_AUTH_ERROR) ?
-                         "WiFi station authentication failed" : "WiFi access-point not found");
-#ifdef CONFIG_MOWI_PROV_MGR_RESET_ON_FAILURE
-                retries++;
-                if (retries >= CONFIG_MOWI_PROV_MGR_MAX_RETRY_CNT) {
-                    ESP_LOGI(TAG, "Failed to connect with provisioned AP, reseting provisioned credentials");
-                    wifi_prov_mgr_reset_sm_state_on_failure();
-                    retries = 0;
-                }
-#endif
-                break;
-            }
-            case WIFI_PROV_CRED_SUCCESS:
-                ESP_LOGI(TAG, "Provisioning successful");
-#ifdef CONFIG_MOWI_PROV_MGR_RESET_ON_FAILURE
-                retries = 0;
-#endif
-                break;
-            case WIFI_PROV_END:
-                // De-initialize manager
-                wifi_prov_mgr_deinit();
-                break;
-            default:
-                break;
+        case WIFI_PROV_START:
+            ESP_LOGI(TAG, "Provisioning started");
+            break;
+
+        case WIFI_PROV_CRED_RECV: {
+            wifi_sta_config_t *wifi_sta_cfg = (wifi_sta_config_t *)event_data;
+            ESP_LOGI(TAG, "Received WiFi credentials"
+                        "\n\tSSID     : %s\n\tPassword : %s",
+                        (const char *) wifi_sta_cfg->ssid,
+                        (const char *) wifi_sta_cfg->password);
+            break;
+        }
+
+        case WIFI_PROV_CRED_FAIL: {
+            wifi_prov_sta_fail_reason_t *reason = (wifi_prov_sta_fail_reason_t *)event_data;
+            ESP_LOGE(TAG, "Provisioning failed\n\tReason : %s",
+                        (*reason == WIFI_PROV_STA_AUTH_ERROR) ?
+                        "WiFi station authentication failed" : "WiFi access-point not found");
+            wifi_prov_mgr_reset_sm_state_on_failure();
+
+            // Wait for ESP to inform BLE app
+            vTaskDelay(500);
+
+            // Reboot ESP
+            esp_restart();
+            break;
+        }
+
+        case WIFI_PROV_CRED_SUCCESS:
+            ESP_LOGI(TAG, "Provisioning successful");
+            break;
+
+        case WIFI_PROV_END:
+            // De-initialize manager
+            wifi_prov_mgr_deinit();
+            break;
+            
+        default:
+            break;
         }
     }
     

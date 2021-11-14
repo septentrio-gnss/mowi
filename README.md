@@ -13,7 +13,7 @@ License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) & [OSHW 
 **Mowi is an Open Source hardware project that combines a compact Septentrio's GNSS receiver *mosaic* with a wireless *ESP32 Wrover* module.** This extension enables mosaic to access wireless internet, receive remote commands, or use real-time corrections. The communication between the mosaic and the ESP is provided throughout a standard 802.3 Ethernet link. In-build USB HUB allows a user to connect to mowi with a single USB cable while accessing both the mosaic's and ESP's communication interface.
 
 <p align="center">
- <img src="readmeSource/mowi_3Drender_angle_3.png" width="60%">
+ <img src="readmeSource/mowi_title_photo.jpg" width="100%">
 </p>
 
 To support an easy-to-use evaluation and offer a high connectivity, the mowi exposes various interfaces. This includes four JST lock connectors compatible with Pixhawk, external GNSS, or other Septentrio's modules. Shared USB micro B port with an ESP dedicated autoflash circuitry for convenient programming. Support of single or dual antenna setup in MMCX or U.FL connectors. In-build eMMC device for easy data logging. And a separate SMA connector for an external WiFi/Bluetooth antenna. On top of that, the mowi comes with various perks, such as indication LEDs, selectable TTL voltages, or support for external sensors and other advanced circuitry.
@@ -66,6 +66,10 @@ Few external attachments have to be provided to enable mowi's full functionality
  2. Screw a WiFi antenna to mowi's WiFi SMA connector designated as `E.ANT`. This antenna should be explicitly designed for the 2.4 GHz band and facilitate a male SMA connector.
  3. Connect a GNSS antenna to mowi's primary MMCX connector designated as `MAIN`. An ordinary talisman antenna was used through the following examples.
  4. (optional, only for mowi with mosaic-H): Connect a GNSS antenna to mowi's secondary MMCX connector designated as `AUX`.
+
+<p align="center">
+ <img src="readmeSource/mowi_setup_photo.jpg" width="100%">
+</p>
 
 :information_source: Steps 1. and 2. can be skipped when mowi with the ESP32-WROVER-E module is used. As this module facilitates an inbuild WiFi antenna, there is no need for an external one.
 
@@ -153,6 +157,10 @@ In this project, we provide not only the hardware design but also an example fir
 ## Basic WiFi connection
 
 An example named `mowi_wifi_basic` extends mosaic with full access to wireless internet by transparently forwarding internet packets. 
+
+<p align="center">
+ <img src="readmeSource/mowi_wifi_concept.png" width="100%">
+</p>
 
 The objective is to demonstrate how to set up an internet packet forwarding between mosaic's Ethernet and ESP's WiFi with respect to mosaic's MAC address. The ESP module is configured as a WiFi station connecting to a WiFi access point and forwarding all traffic to and from mosaic's Ethernet port. No actions are performed by ESP on layer 3 and higher layers. It is therefore expected that the targeted WiFi access point runs a DHCP server.
 

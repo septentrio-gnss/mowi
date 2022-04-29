@@ -206,6 +206,9 @@ After this successful connection, the ESP module will automatically search for a
  <img src="readmeSource/examples_wifi_client_networks_mockup.png" width="30%">
 </p>
 
+It is recommended to erase flash specially if mowi had been already flashed before. You can do this by using the following command:
+esptool.py -p PORT erase_flash
+
 To flash the provided binaries, connect mowi to your computer, navigate to `examples/mowi_wifi_client/build`, and execute the following command (replace `PORT` accordingly to your system):
 
 `esptool.py -p PORT -b 460800 --before default_reset --after hard_reset --chip esp32 write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x10000 mowi_wifi_client.bin 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin`

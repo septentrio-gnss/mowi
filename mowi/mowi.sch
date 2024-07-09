@@ -788,7 +788,7 @@ L Device:C C8
 U 1 1 60FA9D20
 P 12750 2000
 F 0 "C8" V 12408 2000 50  0000 C CNN
-F 1 "100n" V 12499 2000 50  0000 C CNN
+F 1 "100p" V 12499 2000 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0402_1005Metric" H 12788 1850 50  0001 C CNN
 F 3 "~" H 12750 2000 50  0001 C CNN
 F 4 "10V" V 12590 2000 50  0000 C CNN "Voltage"
@@ -1777,7 +1777,7 @@ Wire Wire Line
 Wire Wire Line
 	6650 5350 7250 5350
 Text Notes 5500 950  0    75   ~ 15
-Greco timing circuitry
+Timing Signal Level Conversion
 Wire Notes Line width 10
 	5500 5000 7500 5000
 Wire Notes Line width 10
